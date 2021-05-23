@@ -88,7 +88,7 @@
 
 					<div class="p-t-27">
 						<a href="https://www.facebook.com/VKTung20" class="fs-18 cl7 hov-cl1 trans-04 m-r-16" style="text-align: center; border-radius: 10px; background: white; padding: 9px; border: 1px solid !important">
-							<i class="fa fa-facebook" style="color: #284ac8;"></i>
+							<i class="fab fa-facebook-f"></i>
 						</a>
 					</div>
 				</div>
@@ -120,6 +120,13 @@
 		</span>
 
 	</div>
+
+<!-- Zalo Chat -->
+	
+
+	<div class="zalo-chat-widget" data-oaid="615852652898890091" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+
+	<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 
 <!--===============================================================================================-->	
@@ -223,5 +230,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+
+<!-- Chat Zalo -->
 
 

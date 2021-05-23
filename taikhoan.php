@@ -4,6 +4,43 @@
 <?php 
 session_start();
 include("phantrangfrontend/head.php");
+include('config.php');
+$login_button = '';
+if(isset($_GET["code"]))
+{
+	$token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+	if(!isset($token['error']))
+	{
+		$google_client->setAccessToken($token['access_token']);
+		$_SESSION['access_token'] = $token['access_token'];
+		$google_service = new Google_Service_Oauth2($google_client);
+		$data = $google_service->userinfo->get();
+		if(!empty($data['given_name']))
+		{
+			$_SESSION['user_first_name'] = $data['given_name'];
+		}
+		if(!empty($data['family_name']))
+		{
+			$_SESSION['user_last_name'] = $data['family_name'];
+		}
+		if(!empty($data['email']))
+		{
+			$_SESSION['user_email_address'] = $data['email'];
+		}
+		if(!empty($_SESSION['gender']))
+		{
+			$_SESSION['user_gender'] = $data['gender'];
+		}
+		if(!empty($_SESSION['picture']))
+		{
+			$_SESSION['user_image'] = $data['picture'];
+		}
+	}
+}
+
+if (!isset($_SESSION['access_token'])) {
+	$login_button = '<a href="'.$google_client->createAuthUrl().'" class="btn btn-block btn-social btn-google btn-flat" style="background: #eb3333; color: white; width:70%;"><i class="fa fa-google-plus"></i> Đăng nhập với Google+</a>';
+}
 ?>
 
 <body class="animsition">
@@ -44,9 +81,36 @@ include("phantrangfrontend/head.php");
 						</button>
 					</form>
 					<div class="social-auth-links text-center">
-				      <p>- Hoặc -</p>
-				      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat" style="background: #3b5998; color: white; width: 80%; margin-left: 11%;"><i class="fa fa-facebook"></i> Đăng nhập với Facebook</a>
-				      <a href="#" class="btn btn-block btn-social btn-google btn-flat" style="background: #eb3333; color: white; width: 80%; margin-left: 11%;"><i class="fa fa-google-plus"></i> Đăng nhập với Google+</a>
+				      <?php
+						   if($login_button == '')
+						   {
+						   	include("phantrangfrontend/connect.php");
+
+								$email=$_SESSION['user_email_address'];
+								$name=$_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];
+								$password=rand();
+								$phone=rand();
+
+								$sql1="SELECT * FROM customers WHERE email_cust='$email'";
+								$results=$connect->query($sql1);
+								$kq1=$results->fetch_assoc();
+
+								if($email==$kq1['email_cust']){
+									
+								}else{
+									$email=$_SESSION['user_email_address'];
+									$sql="INSERT INTO customers(email_cust,name_cust,password,phone_cust) VALUES('$email','$name','$password','$phone')";
+
+									$connect->query($sql);
+									mysqli_close($connect);
+							}	
+						   }
+						   else
+						   {
+						   	echo '<p>- Hoặc -</p>';
+						    echo '<div align="center">'.$login_button . '</div>';
+						   }
+   					?>
     				</div>
 				</div>
 

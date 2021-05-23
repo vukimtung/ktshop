@@ -127,7 +127,7 @@ include("phantrangfrontend/head.php");
 			<div class="row isotope-grid danhsach">
 				<?php
 				include('phantrangfrontend/connect.php');
-				$sql="SELECT * FROM products ORDER BY RAND() LIMIT 12";
+				$sql="SELECT * FROM products ORDER BY RAND() LIMIT 8";
 				$ketqua=$connect->query($sql);
 
 				while($kq=$ketqua->fetch_assoc()) { ?>
@@ -155,12 +155,19 @@ include("phantrangfrontend/head.php");
 								</span>
 							</div>
 
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
+							<form action="xulyfrontend/spyeuthich.php" method="POST">
+								<input type="hidden" name="idsp" value="<?php echo $kq['id_pro'];?>">
+								<input type="hidden" name="idsp" value="<?php echo $kq['name_pro'];?>">
+								<input type="hidden" name="idsp" value="<?php echo $kq['price'];?>">
+								<input type="hidden" name="idsp" value="<?php echo $kq['picture'];?>">
+							<?php
+
+								if ((!empty($_SESSION['user_email_address'])) || (!empty($_SESSION['email']))) { ?>
+									<div class="block2-txt-child2 flex-r p-t-3">
+											<button type="submit" name="yeuthich"><i class="far fa-heart"></i></button>
+									</div>
+								<?php } ?>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -172,10 +179,13 @@ include("phantrangfrontend/head.php");
 				<a href="sanpham.php" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">Xem Thêm</a>
 			</div>
 		</div>
+		
 	</section>
+	
+
+	
 	<?php 
 	include("phantrangfrontend/footer.php");
 	?>
-
 </body>
 </html>

@@ -1,5 +1,9 @@
 <?php
-	if(isset($_SESSION["email"])) {
+include('config.php');
+
+	if(isset($_SESSION['user_email_address'])){
+
+	}else if(isset($_SESSION["email"])) {
 		
 	} else {
 			echo "<script>

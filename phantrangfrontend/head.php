@@ -34,4 +34,7 @@
 <!--Start of AutoAds Tracking Code-->
 <script id='autoAdsMaxLead-widget-script' src='https://cdn.autoads.asia/scripts/autoads-maxlead-widget.js?business_id=87A02B6B54484F71AA31AC4B59ABE31C' type='text/javascript' charset='UTF-8' async></script>
 <!--End of AutoAds Tracking Code-->
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 </head>
