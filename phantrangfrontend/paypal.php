@@ -3,8 +3,21 @@
 <html lang="en">
 <?php
 session_start();
-$idkh = $_SESSION['customer_id'];
-
+include('connect.php');
+        if(isset($_SESSION['user_email_address'])){
+            $emailkh = $_SESSION['user_email_address'];
+            $sql="SELECT * FROM customers WHERE email_cust='$emailkh'";
+            $results=$connect->query($sql);
+            $kq=$results->fetch_assoc();
+        } else if(isset($_SESSION['email'])){
+            $emailkh = $_SESSION['email'];
+            $sql="SELECT * FROM customers WHERE email_cust='$emailkh'";
+            $results=$connect->query($sql);
+            $kq=$results->fetch_assoc();
+        } else {
+        
+    }
+    $idkh = $kq['id_cust'];
 ?>
 <head>
     <link rel="SHORTCUT ICON"  href="https://www.facebook.com/images/emoji.php/v9/f64/1/16/1f370.png">

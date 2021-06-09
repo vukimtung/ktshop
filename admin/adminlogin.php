@@ -48,18 +48,18 @@
       </div>
       <div class="row">
         <!-- /.col -->
-        <div class="col-xs-4" style="text-align: center;">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" name="login">Đăng nhập</button>
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" name="login" style="margin-left: 130%;">Đăng nhập</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
-
+<!-- 
     <div class="social-auth-links text-center">
       <p>- Hoặc -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Đăng nhập với Facebook</a>
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Đăng nhập với Google+</a>
-    </div>
+    </div> -->
 
   </div>
   <!-- /.login-box-body -->

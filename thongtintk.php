@@ -6,8 +6,14 @@ session_start();
 include("phantrangfrontend/head.php");
 include("phantrangfrontend/sessionKH.php");
 include('phantrangfrontend/connect.php');
-		if(isset($_SESSION['email'])){
-		$emailkh = $_SESSION['email'];
+include('config.php');
+		if(isset($_SESSION['user_email_address'])){
+			$emailkh = $_SESSION['user_email_address'];
+			$sql="SELECT * FROM customers WHERE email_cust='$emailkh'";
+			$results=$connect->query($sql);
+			$kq=$results->fetch_assoc();
+		} else if(isset($_SESSION['email'])){
+			$emailkh = $_SESSION['email'];
 			$sql="SELECT * FROM customers WHERE email_cust='$emailkh'";
 			$results=$connect->query($sql);
 			$kq=$results->fetch_assoc();
@@ -86,7 +92,8 @@ include('phantrangfrontend/connect.php');
 
 								<?php
 								$stt = 0;
-								$idkh = $_SESSION['customer_id'];
+								$idkh = $kq['id_cust'];
+								
 								$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE customer_id = '$idkh'";
 								$ketqua2 = $connect->query($sql2);
 								while($kq2=$ketqua2->fetch_assoc()){ 

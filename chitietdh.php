@@ -39,7 +39,6 @@ include("phantrangfrontend/connect.php");
 								</tr>
 
 								<?php
-								if(isset($_SESSION['email'])){
 									$stt = 0;
 									$id_don = $_GET['iddh'];
 					                $sql="SELECT * FROM order_details o LEFT JOIN products p ON o.product_id = p.id_pro WHERE order_id = '$id_don'";
@@ -58,9 +57,6 @@ include("phantrangfrontend/connect.php");
 									<td class="column-5"><?php echo $kq['quantity']?></td>
 								</tr>
 								<?php } ?>
-								<?php } else {
-								
-										} ?>
 							</table>
 						</div>
 					</div>

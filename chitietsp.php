@@ -100,7 +100,7 @@ include("phantrangfrontend/head.php");
 						</div>
 
 						<!--  -->
-						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+						<!-- <div class="flex-w flex-m p-l-100 p-t-40 respon7">
 							<div class="flex-m bor9 p-r-10 m-r-11">
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 									<i class="zmdi zmdi-favorite"></i>
@@ -113,7 +113,7 @@ include("phantrangfrontend/head.php");
 							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 								<i class="fa fa-google-plus"></i>
 							</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -255,7 +255,7 @@ include("phantrangfrontend/head.php");
 		<div class="container">
 			<div class="p-b-45">
 				<h3 class="ltext-107 cl5 txt-center" style="font-family: Montserrat-Bold !important">
-					Sản Phẩm Tương Tự
+					Sản Phẩm Cùng Loại
 				</h3>
 			</div>
 
@@ -292,12 +292,12 @@ include("phantrangfrontend/head.php");
 									</span>
 								</div>
 
-								<div class="block2-txt-child2 flex-r p-t-3">
+								<!-- <div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
 									</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>

@@ -37,7 +37,7 @@ include("phantrangfrontend/head.php");
                                 <div class="card-body row no-gutters align-items-center" style="padding: 0px;">
                                     <!--end of col-->
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Từ khóa" style="border: none !important" name="tukhoa">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Từ khóa" style="border: none !important" name="tukhoa" required="Vui lòng nhập từ khóa">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
@@ -50,70 +50,6 @@ include("phantrangfrontend/head.php");
                         <!--end of col-->
                  </div>
 
-				
-
-				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Sắp xếp theo
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Sản phẩm mới
-									</a>
-								</li>	
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Bán chạy
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col2 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Giá
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Tất cả
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										0 VND - 100.000 VND
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col4 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Danh Mục
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<?php
-									include('phantrangfrontend/connect.php');
-									$sql="SELECT * FROM categories";
-									$ketqua=$connect->query($sql);
-
-									while($kq=$ketqua->fetch_assoc()){ ?>
-										<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-											<?php echo $kq['name_cate'];?>
-										</a>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 
 			<div class="row isotope-grid danhsach" >
@@ -147,13 +83,17 @@ include("phantrangfrontend/head.php");
 									<?php echo number_format($kq['price']);?> VND
 								</span>
 							</div>
+<!-- 
+							<form action="#" method="POST">
+								<input type="hidden" name="" value="<?php echo $kq['id_pro'];?>">
+							<?php
 
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
+								if ((!empty($_SESSION['user_email_address'])) || (!empty($_SESSION['email']))) { ?>
+									<div class="block2-txt-child2 flex-r p-t-3">
+											<button type="submit" name="yeuthich"><i class="far fa-heart"></i></button>
+									</div>
+								<?php } ?>
+							</form> -->
 						</div>
 					</div>
 				</div>

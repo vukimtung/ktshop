@@ -53,8 +53,8 @@
                       value="<?php echo $row['unit'];?>">Hộp</option>
                     <option value="Cái">Cái</option>
                     <?php } else { ?>
-                        value="<?php echo $row['unit'];?>">Cái</option>
-                    <option value="Hộp">Hộp</option>
+                      <option value="<?php echo $row['unit'];?>">Cái</option>
+                      <option value="Hộp">Hộp</option>
                       <?php } ?>
                   </select>
                 </div>
@@ -101,8 +101,8 @@
   <?php 
   include("phantrangadmin/footer.php");
   ?>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     CKEDITOR.replace('description');
-  </script>
+  </script> -->
 </body>
 </html>
