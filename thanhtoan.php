@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Thanh Toán || KT-Shop</title>
+<title>Thanh Toán || KT-Cake</title>
 <link rel="SHORTCUT ICON"  href="https://www.facebook.com/images/emoji.php/v9/f64/1/16/1f370.png">
 <?php 
 session_start();
@@ -63,7 +63,7 @@ include("phantrangfrontend/head.php");
 				</div>
 
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm" style="border-radius: 20px;">
 						<h4 class="mtext-109 cl2 p-b-30">
 							Thông Tin Đặt Hàng
 						</h4>
@@ -91,7 +91,7 @@ include("phantrangfrontend/head.php");
 
 									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 										<select class="js-select2" name="hinhthuctt">
-											<option value="">--Thanh Toán--</option>
+											<option value="">--Chọn Hình Thức Thanh Toán--</option>
 											<option value="Tiền mặt">Tiền mặt khi nhận hàng</option>
 										</select>
 										<div class="dropDownSelect2"></div>
@@ -107,7 +107,7 @@ include("phantrangfrontend/head.php");
 								</span>
 							</div>
 
-							<div class="size-209">
+							<div class="size-209" style="text-align: center;">
 								<span class="mtext-109 cl2">
 									<?php echo number_format($thanhtien); ?> VND
 								</span>

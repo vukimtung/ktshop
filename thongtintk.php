@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Tài Khoản Của Bạn || KT-Shop</title>
+<title>Tài Khoản Của Bạn || KT-Cake</title>
 <?php 
 session_start();
 include("phantrangfrontend/head.php");
@@ -40,9 +40,9 @@ include('config.php');
 	<section class="bg0 p-t-104 p-b-116">
 		<div class="container">
 			<div class="flex-w flex-tr">
-				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center" style="margin-left: 25% !important">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center" style="margin-left: 25%; border-radius: 20px;">
 					<form action="xulyfrontend/capnhattk.php" method="POST">
-						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important;">
+						<h4 class="" style="font-weight: bold !important; margin-bottom: 30px;">
 							Thông Tin Cá Nhân
 						</h4>
 
@@ -78,7 +78,7 @@ include('config.php');
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
-						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important; text-align: center;">Đơn Hàng Của Bạn</h4>
+						<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
@@ -100,9 +100,6 @@ include('config.php');
 									$stt ++;
 
 								?>
-
-							
-
 								<tr class="table_row">
 									<td class="column-1">
 											<?php echo $stt;?>

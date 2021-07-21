@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Tài khoản || KT-Shop</title>
+<title>Tài khoản || KT-Cake</title>
 <?php 
 session_start();
 include("phantrangfrontend/head.php");
@@ -95,7 +95,7 @@ if (!isset($_SESSION['access_token'])) {
 								$results=$connect->query($sql1);
 								$kq1=$results->fetch_assoc();
 
-								if($email==$kq1['email_cust']){
+								if(isset($kq1)){
 									
 								}else{
 									$email=$_SESSION['user_email_address'];
@@ -121,7 +121,7 @@ if (!isset($_SESSION['access_token'])) {
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent" style="margin-top: 5% !important">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email" required="Vui lòng nhập Email.">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="Email" placeholder="Email" required="Vui lòng nhập Email.">
 							<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
 						</div>
 
@@ -141,7 +141,7 @@ if (!isset($_SESSION['access_token'])) {
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="phone" placeholder="Số điện thoại" required="Vui lòng nhập số điện thoại."><i class="fa fa-phone how-pos4 pointer-none"></i>
 						</div>
 
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="margin-left: 30%; width: 40% !important">
+						<button name="dangky" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="margin-left: 30%; width: 40% !important">
 							Đăng ký
 						</button>
 					</form>

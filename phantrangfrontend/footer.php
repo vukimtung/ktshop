@@ -99,14 +99,10 @@
 					<a href="#" class="m-all-1">
 						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
 					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
 				</div>
 
 				<p class="stext-107 cl6 txt-center">
-					Cần Thơ &copy;<script>document.write(new Date().getFullYear());</script> KT-Shop <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+					Cần Thơ &copy;<script>document.write(new Date().getFullYear());</script> KT-Cake <i class="fa fa-heart-o" aria-hidden="true"></i></a>
 				</p>
 			</div>
 		</div>
@@ -122,11 +118,6 @@
 	</div>
 
 <!-- Zalo Chat -->
-	
-
-	<div class="zalo-chat-widget" data-oaid="615852652898890091" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
-
-	<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 
 <!--===============================================================================================-->	

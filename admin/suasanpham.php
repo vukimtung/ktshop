@@ -45,15 +45,12 @@
 
                 <div class="form-group">
                   <label>Tính theo</label>
-                  <select id="unit" name="tinhtheo">
-                    <option 
-                      <?php if($kq['unit']=='Hộp'){
-                        echo 'selected';
-                      ?>
-                      value="<?php echo $row['unit'];?>">Hộp</option>
-                    <option value="Cái">Cái</option>
-                    <?php } else { ?>
-                      <option value="<?php echo $row['unit'];?>">Cái</option>
+                  <select id="unit" name="unit">
+                      <?php if($kq['unit']=='Hộp'){?>
+                      <option selected value="Hộp">Hộp</option>
+                      <option value="Cái">Cái</option>
+                      <?php } else { ?>
+                      <option value="Cái" selected>Cái</option>
                       <option value="Hộp">Hộp</option>
                       <?php } ?>
                   </select>

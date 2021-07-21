@@ -10,7 +10,7 @@
 		$results=$connect->query($sql);
 		$kq=$results->fetch_assoc();
 
-		if(($email=$kq['email_cust']) && ($password=$kq['password'])){
+		if(isset($kq)){
 			$_SESSION['email']=$kq['email_cust'];
 		    $_SESSION['password']=$kq['password'];
 		    $_SESSION['name_cust']=$kq['name_cust'];

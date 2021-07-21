@@ -28,6 +28,7 @@
                 <tr>
                   <th>Tên Khách Hàng</th>
                   <th>Địa Chỉ</th>
+                  <th>Email</th>
                   <th>Số Điện Thoại</th>
                 </tr>
                 </thead>
@@ -41,6 +42,7 @@
                   <tr>
                   <td><?php echo $kq['name_cust']?></td>
                   <td><?php echo $kq['address']?></td>
+                  <td><?php echo $kq['email_cust']?></td>
                   <td><?php echo $kq['phone']?></td>
                 </tr>
                 
