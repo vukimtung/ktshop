@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Tin Tức || KT-Shop</title>
+<title>Tin Tức || KT-Cake</title>
 <?php 
 session_start();
 include("phantrangfrontend/head.php");

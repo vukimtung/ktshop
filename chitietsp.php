@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Chi Tiết || KT-Shop</title>
+<title>Chi Tiết || KT-Cake</title>
 
 <?php 
 session_start();
@@ -207,24 +207,24 @@ include("phantrangfrontend/head.php");
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													<input class="dis-none" type="number" name="rating">
+													<input class="dis-none" type="number" name="rating" required>
 												</span>
 											</div>
 
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
 													<label class="stext-102 cl3" for="review">Nhận xét của bạn về sản phẩm</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review" required></textarea>
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="name">Họ Tên</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
+													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" required="Nhập tên">
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
+													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email" required="Nhập email">
 												</div>
 											</div>
 											<input type="hidden" name="idsp" value="<?php echo $kq['id_pro']; ?>">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>KT-Shop</title>
+<title>KT-Cake</title>
 <?php
 session_start();
 include("phantrangfrontend/head.php");
@@ -114,9 +114,9 @@ include("phantrangfrontend/head.php");
 									$ketqua=$connect->query($sql);
 
 									while($kq=$ketqua->fetch_assoc()){ ?>
-										<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+										<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $kq['id_cate'];?>">
 											<?php echo $kq['name_cate'];?>
-										</a>
+										</button>
 								<?php } ?>
 							</div>
 						</div>
@@ -155,7 +155,7 @@ include("phantrangfrontend/head.php");
 								</span>
 							</div>
 
-							<form action="xulyfrontend/spyeuthich.php" method="POST">
+							<!-- <form action="xulyfrontend/spyeuthich.php" method="POST">
 								<input type="hidden" name="idsp" value="<?php echo $kq['id_pro'];?>">
 								<input type="hidden" name="idsp" value="<?php echo $kq['name_pro'];?>">
 								<input type="hidden" name="idsp" value="<?php echo $kq['price'];?>">
@@ -167,7 +167,7 @@ include("phantrangfrontend/head.php");
 											<button type="submit" name="yeuthich"><i class="far fa-heart"></i></button>
 									</div>
 								<?php } ?>
-							</form>
+							</form> -->
 						</div>
 					</div>
 				</div>
