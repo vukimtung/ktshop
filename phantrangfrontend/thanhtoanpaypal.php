@@ -9,8 +9,10 @@ session_start();
 		$paypal=$_SESSION['payment'];
 		$ngaydat = date("d/m/Y");
 		$tinhtrang=$_SESSION['status'];
+		$idnv = 1;
 
-		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$ngaydat', '$tinhtrang')";
+		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status, id_nvien) 
+			VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$ngaydat', '$tinhtrang', '$idnv')";
 		$connect->query($sql);
 
 		$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
@@ -27,7 +29,8 @@ session_start();
 			$connect->query($sql3);
 		}
 			echo "<script>
-					window.location.href='../index.php';
+					alert('Đặt hàng thành công');
+					window.location.href='../thongtintk.php';
 				</script>";	
 			unset($_SESSION['cart']);
 		}

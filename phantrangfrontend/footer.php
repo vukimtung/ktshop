@@ -1,9 +1,9 @@
 <!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
+	<footer class="bg3 p-t-40 p-b-20">
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
+				<div class="col-sm-6 col-lg-3 p-b-10">
 					<h4 class="stext-301 cl0 p-b-30">
 						Thông Tin
 					</h4>
@@ -29,7 +29,7 @@
 					</ul>
 				</div>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
+				<div class="col-sm-6 col-lg-3 p-b-10">
 					<h4 class="stext-301 cl0 p-b-30">
 						Hỗ Trợ
 					</h4>
@@ -61,7 +61,7 @@
 					</ul>
 				</div>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
+				<div class="col-sm-6 col-lg-3 p-b-10">
 					<h4 class="stext-301 cl0 p-b-30">
 						Liên hệ
 					</h4>
@@ -95,12 +95,6 @@
 			</div>
 
 			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-				</div>
-
 				<p class="stext-107 cl6 txt-center">
 					Cần Thơ &copy;<script>document.write(new Date().getFullYear());</script> KT-Cake <i class="fa fa-heart-o" aria-hidden="true"></i></a>
 				</p>

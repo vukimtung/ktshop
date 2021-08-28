@@ -1,4 +1,4 @@
-<footer class="main-footer">
+<footer class="">
     <div class="pull-right hidden-xs">
       
     </div>

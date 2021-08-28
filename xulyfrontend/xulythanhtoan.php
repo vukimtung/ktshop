@@ -10,6 +10,7 @@ $sdt = $_POST['phone'];
 $hinhthuctt = $_POST['hinhthuctt'];
 $tinhtrang = 'Đơn hàng mới';
 $ngaydat = date("d/m/Y");
+$idnv = 1;
 
 
 if ($hinhthuctt=="Tiền mặt") {
@@ -24,7 +25,8 @@ if ($hinhthuctt=="Tiền mặt") {
 		$customer_id = $kq1['id_cust'];
 	}
 
-$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$ngaydat', '$tinhtrang')";
+$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status, id_nvien) 
+		VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$ngaydat', '$tinhtrang', '$idnv')";
 $connect->query($sql1);
 
 $sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
@@ -39,11 +41,18 @@ foreach ($_SESSION['cart'] as $key => $value) {
 	$sql3="INSERT INTO order_details(order_id, product_id, quantity) VALUES('$orderid', '$idsp', '$soluong')";
 
 	$connect->query($sql3);
+	// echo $idsp;
+	// 	echo '<br>';
+	// 	echo $soluong;
+	// 	echo '<br>';
+	// 	echo $orderid;
 }
 		echo "<script>
-					alert('Đặt hàng thành công');
-					window.location.href='../thongtintk.php';
-				</script>";
+				alert('Đặt hàng thành công');
+				window.location.href='../thongtintk.php';
+			</script>";
+		unset($_SESSION['cart']);
+		
 } else {
 	
 }
@@ -52,21 +61,12 @@ if (isset($_POST['ttonline'])) {
 	$_SESSION['total']=$total * 0.000044;
 	$_SESSION['address']=$diachi;
 	$_SESSION['phone']=$sdt;
-	$_SESSION['payment']="palpay";
+	$_SESSION['payment']="Palpay";
 	$_SESSION['status']=$tinhtrang;
 	header('location: ../phantrangfrontend/paypal.php');
 	}
-	
-
-		if (isset($_POST['thanhtoan'])) {
-			unset($_SESSION['cart']);
-		}
-
-
-// Gửi mail đặt hàng
-
-
-
-
+		// if (isset($_POST['thanhtoan'])) {
+		// 	unset($_SESSION['cart']);
+		// }
 
 ?>

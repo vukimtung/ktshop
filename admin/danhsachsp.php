@@ -19,7 +19,10 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Danh sách sản phẩm</h3>
+            <h1 style="text-align: center; color: red; font-weight: bold;">Danh Sách Sản Phẩm</h1>
+                <ol class="breadcrumb">
+                    <li><a href="themsp.php" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Thêm sản phẩm</i></a></li>
+                </ol>
             </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -48,11 +51,10 @@
                   <td><?php echo $kq['unit']?></td>
                   <td><?php echo $kq['name_cate']?></td>
                   <td>
-                    <a href="xulybackend/xoasanpham.php?del_id=<?php echo $kq['id_pro']?>" style="padding-right: 20px"><i class="fa fa-times" aria-hidden="true">Xóa</i></a>
-                  <a href="suasanpham.php?up_id=<?php echo $kq['id_pro']?>"><i class="fa fa-edit" aria-hidden="true">Sửa</i></a>
+                    <a href="xulybackend/xoasanpham.php?del_id=<?php echo $kq['id_pro']?>" style="padding-right: 20px" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
+                  <a href="suasanpham.php?up_id=<?php echo $kq['id_pro']?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Sửa</i></a>
                 </td>
                 </tr>
-                
                 <?php } ?>
               </table>
             </div>

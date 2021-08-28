@@ -107,8 +107,11 @@ if (!isset($_SESSION['access_token'])) {
 						   }
 						   else
 						   {
-						   	echo '<p>- Hoặc -</p>';
-						    echo '<div align="center">'.$login_button . '</div>';
+							   if(!isset($_SESSION['email'])){
+								echo '<p>- Hoặc -</p>';
+								echo '<div align="center">'.$login_button . '</div>';
+							   }
+						   	
 						   }
    					?>
     				</div>
@@ -121,7 +124,7 @@ if (!isset($_SESSION['access_token'])) {
 						</h4>
 
 						<div class="bor8 m-b-20 how-pos4-parent" style="margin-top: 5% !important">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="Email" placeholder="Email" required="Vui lòng nhập Email.">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email_kh" placeholder="Email" required="Vui lòng nhập Email.">
 							<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
 						</div>
 

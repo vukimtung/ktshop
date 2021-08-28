@@ -31,6 +31,23 @@ include("phantrangfrontend/head.php");
 					<?php } ?>
 				</div>
 
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+						Tất cả giá
+					</button>
+					<?php
+						include('phantrangfrontend/connect.php');
+						$sql="SELECT DISTINCT price FROM products ORDER BY price ASC";
+						// $sql="SELECT DISTINCT price FROM products WHERE price<'100000'";
+						$ketqua=$connect->query($sql);
+
+						while($kq=$ketqua->fetch_assoc()){ ?>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $kq['price'];?>">
+							<?php echo number_format($kq['price']);?>
+						</button>
+					<?php } ?>
+				</div>
+
 					<div class="flex-w flex-c-m m-tb-10">
                         <div class="col-12 col-md-10">
                             <form class="card card-sm" action="timkiemsp.php" method="POST">
@@ -62,7 +79,7 @@ include("phantrangfrontend/head.php");
 				while($kq=$ketqua->fetch_assoc()) { ?>
 
 
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item <?php echo $kq['category_id'];?>">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item <?php echo $kq['category_id'];?> <?php echo $kq['price'];?>">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">

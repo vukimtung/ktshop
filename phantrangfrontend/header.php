@@ -15,20 +15,20 @@ include('config.php');
 
 					<div class="right-top-bar flex-w h-full">
 						<?php
-							if (!empty($_SESSION['user_email_address'])){ ?>
+							if (isset($_SESSION['user_email_address'])){ ?>
 							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i><?php echo $_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];?></a>
 							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>Đăng xuất</a>
-							<?php } else if (!empty($_SESSION['email'])){ ?>
+							<?php } else if (isset($_SESSION['email'])){ ?>
 							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i><?php echo $_SESSION['name_cust'];?></a>
 							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>Đăng xuất</a>
 						<?php } else { ?>
-						<a href="taikhoan.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>Tài khoản</a>
+						<a href="taikhoan.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&nbsp;Tài khoản</a>
 					<?php } ?>
 					</div>
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop" style="background: #f3debe !important">
+			<div class="wrap-menu-desktop" style="background: linear-gradient(-180deg, #f2e49f, #eab2a0) !important">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		

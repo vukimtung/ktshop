@@ -1,6 +1,7 @@
 <?php
 session_start();
-session_destroy();
-
-header('location: ../adminlogin.php');
+if(isset($_SESSION['email_ad'])){
+    unset($_SESSION['email_ad']);
+    header('location: ../adminlogin.php');
+}
 ?>

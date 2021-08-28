@@ -3591,3 +3591,27 @@ input.num-product::-webkit-inner-spin-button {
     padding: 20px;
   }
 }
+
+.button-xem {
+  padding-right: 15px;
+  margin-right: 5px;
+  background-color: #00a65a;
+  border-color: #008d4c;
+  color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
+.button-xoa {
+  padding-right: 15px;
+  margin-right: 5px;
+  background-color: red;
+  border-color: red;
+  color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+}

@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="border-radius: 15px; border: 1px solid green; background: #f6f3f3;">
           <form role="form" action="xulybackend/xulysuasp.php" method="POST" enctype="multipart/form-data">
 
             <?php
@@ -61,9 +61,9 @@
                   <textarea class="form-control" id="description" name="description" rows="10"><?php echo $kq['description']?></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="picture">Hình ảnh sản phẩm</label>
+                  <label for="picture">Hình ảnh sản phẩm</label><br>
+                  <img src="../<?php echo $kq['picture']?>" height="100" width="100" id="image">
                   <input type="file" id="picture" name="file">
-                  <img src="../<?php echo $kq['picture']?>" height="100" width="100">
                 </div>
                 <div class="form-group">
                   <label>Danh mục</label>
@@ -89,17 +89,33 @@
               </div>
         </form>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+        </div>
       </div>
     </section>
+    <div class="row center-block">
+        <div class="col-sm-3" style="margin-bottom: 10px;">
+        <button onclick="location.href='danhsachsp.php'" style="margin-right: 10px; ">Trở lại</button>
+        </div>
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <?php 
   include("phantrangadmin/footer.php");
   ?>
-  <!-- <script type="text/javascript">
-    CKEDITOR.replace('description');
-  </script> -->
+  <script>
+    document.getElementById("picture").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+    };
+  </script>
 </body>
 </html>

@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="count-info">
                                         <h5 id="confirmed-total"></h5>
-                                        <span>Dương tính</span>
+                                        <span>Số ca dương tính</span>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="count-info">
                                         <h5 id="recovered-total"></h5>
-                                        <span>Khỏi bệnh</span>
+                                        <span>Đã bình phục</span>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="count-info">
                                         <h5 id="death-total"></h5>
-                                        <span>Người chết</span>
+                                        <span>Số ca tử vong</span>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div class="box">
-                        <div class="box-header">Tỉ lệ khỏi bệnh</div>
+                        <div class="box-header">Tỉ lệ bình phục</div>
                         <div class="box-body">
                             <div id="recover-rate-chart"></div>
                         </div>
@@ -176,9 +176,9 @@
                                 <thead>
                                     <tr>
                                         <th>Quốc Gia</th>
-                                        <th>Dương tính</th>
-                                        <th>Khỏi bệnh</th>
-                                        <th>Người chết</th>
+                                        <th>Số ca dương tính</th>
+                                        <th>Đã bình phục</th>
+                                        <th>Số ca tử vong</th>
                                     </tr>
                                 </thead>
                                 <tbody>
