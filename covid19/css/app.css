@@ -1,5 +1,5 @@
 :root {
-  --bg-body: #fafbfd;
+  --bg-body: #c3d5f8;
   --bg-content: #ffffff;
   --bg-hover: #f4f4f4;
   --color-txt: #172b4d;
@@ -27,7 +27,7 @@ a {
 body {
   font-family: "Cairo", sans-serif;
   position: relative;
-  background-color: #c3d5f8;
+  background-color: var(--bg-body);
   color: var(--color-txt);
   padding-top: calc(var(--nav-height) + 30px);
   font-size: 16px;
@@ -123,11 +123,18 @@ body {
   box-shadow: var(--shadow);
   padding: 15px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .dark .box {
   border: 1px solid var(--bg-content);
   background-color: var(--bg-body);
+}
+
+.dark .box-hover:hover {
+  transition: scale(1.05) translateY(-10px);
+  box-shadow: rgb(0 0 0 / 10%) 0px 15px 30px;
+  background-color: grey;
 }
 
 .box-hover {

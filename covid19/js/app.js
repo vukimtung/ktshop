@@ -206,13 +206,13 @@ loadAllTimeChart = async (country) => {
     }
 
     let series = [{
-        name: 'Dương tính',
+        name: 'Số ca dương tính',
         data: confirm_data
     }, {
-        name: 'Khỏi bệnh',
+        name: 'Đã bình phục',
         data: recovered_data
     }, {
-        name: 'Chết',
+        name: 'Số ca tử vong',
         data: deaths_data
     }]
 
@@ -284,13 +284,13 @@ loadDaysChart = async (country) => {
     }
 
     let series = [{
-        name: 'Dương tính',
+        name: 'Số ca dương tính',
         data: confirm_data
     }, {
-        name: 'Khỏi bệnh',
+        name: 'Đã bình phục',
         data: recovered_data
     }, {
-        name: 'Chết',
+        name: 'Số ca tử vong',
         data: deaths_data
     }]
 
@@ -309,7 +309,7 @@ initRecoveryRate = async () => {
             height: '350'
         },
         series: [],
-        labels: ['Tỉ lệ khỏi bệnh'],
+        labels: ['Tỉ lệ bình phục'],
         colors: [COLORS.recovered]
     }
 

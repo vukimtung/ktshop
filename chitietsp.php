@@ -53,7 +53,7 @@ include("phantrangfrontend/head.php");
 							Giá: <?php echo number_format($kq['price']). ' VND';?>
 						</span><br><br>
 						<span class="mtext-106 cl2">
-							Tính theo: <?php echo $kq['unit'];?>
+							Đơn vị tính: <?php echo $kq['unit'];?>
 						</span><br><br>
 						<!--  -->
 						<div class="p-t-33">
@@ -152,7 +152,7 @@ include("phantrangfrontend/head.php");
 										<?php
 											include('phantrangfrontend/connect.php');
 											$idsp=$_GET['idsp'];
-											$sql1 = "SELECT * FROM comments WHERE idsp = '$idsp'";
+											$sql1 = "SELECT * FROM comments AS c INNER JOIN customers AS k ON c.id_kh = k.id_cust WHERE idsp = '$idsp'";
 											$ketqua1 = $connect->query($sql1);
 											while ($kq1=$ketqua1->fetch_assoc()){ ?>
 											<div class="flex-w flex-t p-b-68">
@@ -163,7 +163,7 @@ include("phantrangfrontend/head.php");
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														<?php echo $kq1['name_kh']; ?>
+														<?php echo $kq1['name_cust']; ?>
 													</span>
 
 													<span class="fs-18 cl11">
@@ -184,7 +184,10 @@ include("phantrangfrontend/head.php");
 										</div>
 										<?php } ?>
 
-										
+										<?php
+
+										if ((!empty($_SESSION['user_email_address'])) || (!empty($_SESSION['email']))) { ?>
+											
 										
 										<!-- Add review -->
 										<form class="w-full" action="xulyfrontend/nhanxetsp.php" method="POST">
@@ -217,22 +220,30 @@ include("phantrangfrontend/head.php");
 													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review" required></textarea>
 												</div>
 
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Họ Tên</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" required="Nhập tên">
-												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email" required="Nhập email">
-												</div>
+												<?php
+													if (!empty($_SESSION['user_email_address'])){ 
+														$email_khach = $_SESSION['user_email_address'];
+													} else if (!empty($_SESSION['email'])){ 
+																$email_khach = $_SESSION['email'];	
+													} 
+													$sql2 = "SELECT * FROM customers WHERE email_cust = '$email_khach'";
+														$ketqua2 = $connect->query($sql2);
+														while ($kq2=$ketqua2->fetch_assoc()){ ?>
+														<input type="hidden" name="id_khach" value="<?php echo $kq2['id_cust']; ?>">
+													<?php } ?>
 											</div>
+											
 											<input type="hidden" name="idsp" value="<?php echo $kq['id_pro']; ?>">
-											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-												Gửi
+												<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+													Gửi
 											</button>
 
 										</form>
+										<?php } else { ?>
+											<h5 class="mtext-108 cl2 p-b-7 " style="text-align: center;">
+												Bạn cần đăng nhập để có thể đánh giá sản phẩm.
+											</h5>
+										<?php } ?>
 									</div>
 								</div>
 							</div>
@@ -274,7 +285,7 @@ include("phantrangfrontend/head.php");
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="<?php echo $kqua['picture'];?>" alt="IMG-PRODUCT">
+								<img src="<?php echo $kqua['picture'];?>" alt="IMG-PRODUCT" style="height: 250px; object-fit: cover;">
 
 								<a href="chitietsp.php?idsp=<?php echo $kq['id_pro'];?>&iddm=<?php echo $kq['category_id'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Xem

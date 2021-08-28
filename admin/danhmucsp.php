@@ -19,7 +19,10 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Danh Sách Danh Mục</h3>
+            <h1 style="text-align: center; color: red; font-weight: bold;">Danh Sách Danh Mục </h1>
+                <ol class="breadcrumb">
+                    <li><a href="themdmsp.php" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Thêm danh mục</i></a></li>
+                </ol>
             </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -38,8 +41,8 @@
                   <tr>
                   <td><?php echo $kq['name_cate']?></td>
                   <td>
-                    <a href="xulybackend/xoadanhmuc.php?del_id=<?php echo $kq['id_cate']?>" style="padding-right: 20px"><i class="fa fa-times" aria-hidden="true">Xóa</i></a>
-                  <a href="suadanhmuc.php?up_id=<?php echo $kq['id_cate']?>"><i class="fa fa-edit" aria-hidden="true">Sửa</i></a>
+                    <a href="xulybackend/xoadanhmuc.php?del_id=<?php echo $kq['id_cate']?>" style="padding-right: 20px" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
+                  <a href="suadanhmuc.php?up_id=<?php echo $kq['id_cate']?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Sửa</i></a>
                 </td>
                 </tr>
                 

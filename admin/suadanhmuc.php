@@ -16,13 +16,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 style="text-align: center; color: red; font-weight: bold;">Sửa Danh Mục</h1>
-      
     </section>
     <section class="content">
       <div class="row">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="border-radius: 15px; border: 1px solid green; background: #f6f3f3;">
           <form role="form" action="xulybackend/xulysuadm.php" method="POST" enctype="multipart/form-data">
 
             <?php
@@ -44,9 +43,13 @@
               </div>
         </form>
         </div>
-        <div class="col-sm-3"></div>
       </div>
     </section>
+    <div class="row center-block">
+        <div class="col-sm-3" style="margin-bottom: 10px;">
+        <button onclick="location.href='danhmucsp.php'" style="margin-right: 10px; ">Trở lại</button>
+        </div>
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -25,18 +25,18 @@
       <div class="row">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="border-radius: 15px; border: 1px solid green; background: #f6f3f3;">
           <form role="form" action="xulybackend/xulythemsp.php" method="POST" enctype="multipart/form-data">
               <div class="box-body">
 
                 <div class="form-group">
                   <label for="name_pro">Tên sản phẩm</label>
-                  <input type="text" class="form-control" id="name_pro" name="name_pro" placeholder="Nhập tên sản phẩm">
+                  <input type="text" class="form-control" id="name_pro" name="name_pro" placeholder="Nhập tên sản phẩm" required>
                 </div>
 
                 <div class="form-group">
                   <label for="price">Giá sản phẩm</label>
-                  <input type="text" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm">
+                  <input type="text" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm" required>
                 </div>
 
                 <div class="form-group">
@@ -49,12 +49,13 @@
 
                 <div class="form-group">
                   <label for="description">Mô tả sản phẩm</label>
-                  <textarea class="form-control" id="description" name="description" rows="10" placeholder="Nhập mô tả sản phẩm"></textarea>
+                  <textarea class="form-control" id="description" name="description" rows="10" placeholder="Nhập mô tả sản phẩm" required></textarea>
                 </div>
 
                 <div class="form-group">
-                  <label for="picture">Hình ảnh sản phẩm</label>
-                  <input type="file" id="picture" name="file">
+                  <label for="picture">Hình ảnh sản phẩm</label><br>
+                  <img id="image" height="100" width="100"/>
+                  <input type="file" id="picture" name="file" required>
                 </div>
 
                 <div class="form-group">
@@ -81,6 +82,11 @@
         <div class="col-sm-3"></div>
       </div>
     </section>
+    <div class="row center-block">
+        <div class="col-sm-3" style="margin-bottom: 10px;">
+        <button onclick="location.href='danhsachsp.php'" style="margin-right: 10px; ">Trở lại</button>
+        </div>
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -89,6 +95,19 @@
   ?>
   <script type="text/javascript">
     CKEDITOR.replace('description');
+  </script>
+  <script>
+    document.getElementById("picture").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+    };
   </script>
 </body>
 </html>

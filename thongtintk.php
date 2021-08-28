@@ -74,56 +74,334 @@ include('config.php');
 
 		</div><br><br>
 
+		<div class="bor10 m-t-50 p-t-43 p-b-40">
+				<!-- Tab01 -->
+				<div class="tab01">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item p-b-10">
+							<a class="nav-link active" data-toggle="tab" href="#tatca" role="tab"><i class="fa fa-clipboard-list"></i>&nbsp;Tất cả đơn hàng</a>
+						</li>
 
-			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-					<div class="m-l-25 m-r--38 m-lr-0-xl">
-						<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
-						<div class="wrap-table-shopping-cart">
-							<table class="table-shopping-cart">
-								<tr class="table_head">
-									<th class="column-1">Đơn hàng</th>
-									<th class="column-2">Tổng đơn</th>
-									<th class="column-3">Hình thức thanh toán</th>
-									<th class="column-4">Ngày đặt hàng</th>
-									<th class="column-5">Tình trạng</th>
-									<th class="column-6" colspan="2"></th>
-								</tr>
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#moi" role="tab"><i class="fa fa-clipboard-check"></i>&nbsp;Chờ xác nhận</a>
+						</li>
 
-								<?php
-								$stt = 0;
-								$idkh = $kq['id_cust'];
-								
-								$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE customer_id = '$idkh'";
-								$ketqua2 = $connect->query($sql2);
-								while($kq2=$ketqua2->fetch_assoc()){ 
-									$stt ++;
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#layhang" role="tab"><i class="fa fa-clock-o"></i></i>&nbsp;Chờ lấy hàng</a>
+						</li>
+						
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#danggiao" role="tab"><i class="fa fa-shipping-fast"></i>&nbsp;Đang giao</a>
+						</li>
 
-								?>
-								<tr class="table_row">
-									<td class="column-1">
-											<?php echo $stt;?>
-									</td>
-									<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
-									<td class="column-3"> <?php echo $kq2['payment'];?></td>
-									<td class="column-4"> <?php echo $kq2['date_order'];?></td>
-									<td class="column-5"> <?php echo $kq2['status'];?></td>
-									<?php
-									if($kq2['status']=='Đã giải quyết'){?>
-                  						<td class="column-6">
-											<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" style="padding-right: 20px"><i class="fa fa-edit" aria-hidden="true">Xem</i></a>
-										</td>
-									<?php } else{ ?>
-											<td class="column-6">
-												<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" style="padding-right: 20px"><i class="fa fa-edit" aria-hidden="true">Xem</i></a>
-											</td>
-										<td class="column-7">
-											<a href="xulyfrontend/huydonhang.php?iddh=<?php echo $kq2['id_order']?>" style="padding-right: 20px"><i class="fa fa-times" aria-hidden="true">Hủy</i></a>
-										</td>
-										<?php } ?>
-								</tr>
-								<?php } ?>
-							</table>
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#dagiao" role="tab"><i class="fa fa-box"></i>&nbsp;Đã giao</a>
+						</li>
+
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#xacnhan" role="tab"><i class="fa fa-check-double"></i>&nbsp;Xác nhận đã nhận hàng</a>
+						</li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content p-t-43">
+						<!-- - -->
+						<div class="tab-pane fade show active" id="tatca" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE customer_id = '$idkh' ORDER BY date_order DESC";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<?php
+													if($kq2['status']=='Đơn hàng mới'){?>
+														<td class="column-6">
+															<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem">
+																<i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+														</td>
+														<td class="column-7">
+															<a href="xulyfrontend/huydonhang.php?iddh=<?php echo $kq2['id_order']?>" 
+															style="" class="btn btn-default button-xoa">
+																<i class="fa fa-times" aria-hidden="true"> Hủy</i></a>
+														</td>
+													<?php } else{ ?>
+															<td class="column-6">
+																<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+															</td>
+														<?php } ?>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- - -->
+						<div class="tab-pane fade" id="moi" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE (customer_id = '$idkh') AND (status = 'Đơn hàng mới')";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<td class="column-6">
+														<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+													</td>
+													<td class="column-7">
+														<a href="xulyfrontend/huydonhang.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xoa">
+															<i class="fa fa-times" aria-hidden="true"> Hủy</i></a>
+													</td>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- - -->
+						<div class="tab-pane fade" id="layhang" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE (customer_id = '$idkh') AND (status = 'Đã xác nhận')";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<td class="column-6">
+														<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+													</td>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- - -->
+						<div class="tab-pane fade" id="danggiao" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE (customer_id = '$idkh') AND (status = 'Đang giao')";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<td class="column-6">
+														<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+													</td>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- - -->
+						<div class="tab-pane fade" id="dagiao" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE (customer_id = '$idkh') AND (status = 'Đã giao')";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<td class="column-6">
+														<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+													</td>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- - -->
+						<div class="tab-pane fade" id="xacnhan" role="tabpanel">
+							<div class="row">
+								<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+									<div class="m-l-25 m-r--38 m-lr-0-xl">
+										<h4 class="" style="font-weight: bold !important; text-align: center; margin-left: -95px;">Đơn Hàng Của Bạn</h4>
+										<div class="wrap-table-shopping-cart">
+											<table class="table-shopping-cart">
+												<tr class="table_head">
+													<th class="column-1">Đơn hàng</th>
+													<th class="column-2">Tổng đơn</th>
+													<th class="column-3">Hình thức thanh toán</th>
+													<th class="column-4">Ngày đặt hàng</th>
+													<th class="column-5">Tình trạng</th>
+													<th class="column-6" colspan="2"></th>
+												</tr>
+
+												<?php
+												$stt = 0;
+												$idkh = $kq['id_cust'];
+												
+												$sql2 = "SELECT * FROM orders o LEFT JOIN customers c ON o.customer_id = c.id_cust WHERE (customer_id = '$idkh') AND (status = 'Nhận thành công')";
+												$ketqua2 = $connect->query($sql2);
+												while($kq2=$ketqua2->fetch_assoc()){ 
+													$stt ++;
+												?>
+												<tr class="table_row">
+													<td class="column-1">
+															<?php echo $stt;?>
+													</td>
+													<td class="column-2"><?php echo number_format($kq2['total']);?> VND</td>
+													<td class="column-3"> <?php echo $kq2['payment'];?></td>
+													<td class="column-4"> <?php echo $kq2['date_order'];?></td>
+													<td class="column-5"> <?php echo $kq2['status'];?></td>
+													<td class="column-6">
+														<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+													</td>
+												</tr>
+												<?php } ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

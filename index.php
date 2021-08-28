@@ -32,7 +32,7 @@ include("phantrangfrontend/head.php");
 					</button>
 					<?php
 						include('phantrangfrontend/connect.php');
-						$sql="SELECT * FROM categories";
+						$sql="SELECT * FROM categories ORDER BY name_cate ASC";
 						$ketqua=$connect->query($sql);
 
 						while($kq=$ketqua->fetch_assoc()){ ?>
@@ -42,13 +42,30 @@ include("phantrangfrontend/head.php");
 					<?php } ?>
 				</div>
 
-				<div class="flex-w flex-c-m m-tb-10">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+						Tất cả giá
+					</button>
+					<?php
+						include('phantrangfrontend/connect.php');
+						$sql="SELECT DISTINCT price FROM products ORDER BY price ASC";
+						// $sql="SELECT DISTINCT price FROM products WHERE price<'100000'";
+						$ketqua=$connect->query($sql);
+
+						while($kq=$ketqua->fetch_assoc()){ ?>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".<?php echo $kq['price'];?>">
+							<?php echo number_format($kq['price']);?>
+						</button>
+					<?php } ?>
+				</div>
+
+				<!-- <div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						 Lọc
 					</div>
-				</div>
+				</div> -->
 
 
 				<!-- Tìm kiếm sản phẩm -->
@@ -56,23 +73,19 @@ include("phantrangfrontend/head.php");
                         <div class="col-12 col-md-10">
                             <form class="card card-sm" action="timkiemsp.php" method="POST">
                                 <div class="card-body row no-gutters align-items-center" style="padding: 0px;">
-                                    <!--end of col-->
                                     <div class="col">
                                         <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Từ khóa" style="border: none !important" name="tukhoa">
                                     </div>
-                                    <!--end of col-->
                                     <div class="col-auto">
                                         <button class="btn btn-lg btn-success" type="submit" name="timsp">Tìm</button>
                                     </div>
-                                    <!--end of col-->
                                 </div>
                             </form>
                         </div>
-                        <!--end of col-->
                  </div>
 				
 				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
+				<!-- <div class="dis-none panel-filter w-full p-t-10">
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
@@ -121,7 +134,7 @@ include("phantrangfrontend/head.php");
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="row isotope-grid danhsach">
@@ -133,7 +146,7 @@ include("phantrangfrontend/head.php");
 				while($kq=$ketqua->fetch_assoc()) { ?>
 
 
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item <?php echo $kq['category_id'];?>">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item <?php echo $kq['category_id'];?> <?php echo $kq['price'];?>">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -181,8 +194,6 @@ include("phantrangfrontend/head.php");
 		</div>
 		
 	</section>
-	
-
 	
 	<?php 
 	include("phantrangfrontend/footer.php");

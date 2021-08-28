@@ -15,9 +15,9 @@
 		$results=$connect->query($sql);
 		$kq=$results->fetch_assoc();
 
-    $_SESSION['email']=$kq['email'];
+    $_SESSION['email_ad']=$kq['email'];
     $_SESSION['name_ad']=$kq['name_ad'];
-    $_SESSION['password']=$kq['password'];
+    $_SESSION['password_ad']=$kq['password'];
 
 		if($adminname=$kq['email'] AND $password=$kq['password']){
 			header('location: adminindex.php');

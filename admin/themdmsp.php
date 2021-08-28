@@ -25,12 +25,12 @@
       <div class="row">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="border-radius: 15px; border: 1px solid green; background: #f6f3f3;">
           <form role="form" action="xulybackend/xulythemdmsp.php" method="POST">
               <div class="box-body">
                 <div class="form-group">
                   <label for="name_cate">Tên danh mục</label>
-                  <input type="text" class="form-control" id="name_cate" name="name_cate" placeholder="Nhập tên danh mục sản phẩm">
+                  <input type="text" class="form-control" id="name_cate" name="name_cate" placeholder="Nhập tên danh mục sản phẩm" required>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -43,6 +43,11 @@
         <div class="col-sm-3"></div>
       </div>
     </section>
+    <div class="row center-block">
+        <div class="col-sm-3" style="margin-bottom: 10px;">
+        <button onclick="location.href='danhmucsp.php'" style="margin-right: 10px; ">Trở lại</button>
+        </div>
+    </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
