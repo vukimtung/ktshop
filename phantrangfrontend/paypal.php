@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -18,9 +17,10 @@ include('connect.php');
         
     }
     $idkh = $kq['id_cust'];
+    $gia = $_SESSION['total'];
 ?>
 <head>
-    <link rel="SHORTCUT ICON"  href="https://www.facebook.com/images/emoji.php/v9/f64/1/16/1f370.png">
+<link rel="SHORTCUT ICON"  href="https://www.facebook.com/images/emoji.php/v9/f64/1/16/1f370.png">
     <!-- Add meta tags for mobile and IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,8 +45,7 @@ include('connect.php');
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: <?php echo $_SESSION['total']; ?>
-                            
+                            value: '10'
                         }
                     }]
                 });
@@ -55,11 +54,9 @@ include('connect.php');
             // Finalize the transaction
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    
-                    alert('Thanh toán thành công '); //+ details.payer.name.given_name + '!'
-                    window.location = "thanhtoanpaypal.php?idkh=<?php echo $idkh; ?>";
+                    // alert('Thanh toán thành công '); //+ details.payer.name.given_name + '!'
+                    window.location = "thanhtoanpaypal.php?idkh=<?php echo $idkh; ?>&gia=<?php echo $gia;?>";
                 });
-                
             }
 
 
@@ -68,4 +65,3 @@ include('connect.php');
 </body>
 
 </html>
-    

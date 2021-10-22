@@ -12,7 +12,4 @@ include('config.php');
 			  </script>";
 
 	}
-	
-	
-
  ?>

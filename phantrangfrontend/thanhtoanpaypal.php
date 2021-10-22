@@ -3,16 +3,16 @@ include('../phantrangfrontend/connect.php');
 session_start();
 	if (isset($_GET['idkh']) ) {
 		$cus_id=$_GET['idkh'];
-		$total=$_SESSION['total'] / 0.000044;
+		// $total=$_SESSION['total'] / 0.000044;
+		$total = $_GET['gia'];
 		$diachi=$_SESSION['address'];
 		$sdt=$_SESSION['phone'];
 		$paypal=$_SESSION['payment'];
 		$ngaydat = date("d/m/Y");
 		$tinhtrang=$_SESSION['status'];
-		$idnv = 1;
 
-		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status, id_nvien) 
-			VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$ngaydat', '$tinhtrang', '$idnv')";
+		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) 
+			VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$ngaydat', '$tinhtrang')";
 		$connect->query($sql);
 
 		$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
@@ -23,8 +23,9 @@ session_start();
 		foreach ($_SESSION['cart'] as $key => $value) {
 			$idsp=$value['item_id'];
 			$soluong=$value['quantity'];
+			$dongia = $value['item_price'];
 
-			$sql3="INSERT INTO order_details(order_id, product_id, quantity) VALUES('$orderid', '$idsp', '$soluong')";
+			$sql3="INSERT INTO order_details(order_id, product_id, quantity, unitprice) VALUES('$orderid', '$idsp', '$soluong', '$dongia')";
 
 			$connect->query($sql3);
 		}

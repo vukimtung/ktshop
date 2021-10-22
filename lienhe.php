@@ -23,7 +23,7 @@ include("phantrangfrontend/head.php");
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
 		<div class="container">
-			<div class="flex-w flex-tr">
+			<div class="flex-w flex-tr" style="background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190)); margin-bottom: 10px;">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center">
 					<form action="xulyfrontend/xulylienhe.php" method="POST">
 						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important;">

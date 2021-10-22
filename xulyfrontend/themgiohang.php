@@ -9,10 +9,10 @@ if (isset($_SESSION['cart'])) {
 		</script>";
 	}else{
 		$count=count($_SESSION['cart']);
-	$_SESSION['cart'][$count]=array('item_id' => $_GET['cart_id'], 'item_name'=>$_GET['cart_name'], 'item_price'=>$_GET['cart_price'], 'item_picture'=>$_GET['cart_picture'], 'quantity'=>1);
-	echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng.');
-	window.location.href='../sanpham.php';
-	</script>";
+		$_SESSION['cart'][$count]=array('item_id' => $_GET['cart_id'], 'item_name'=>$_GET['cart_name'], 'item_price'=>$_GET['cart_price'], 'item_picture'=>$_GET['cart_picture'], 'quantity'=>1);
+		echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng.');
+		window.location.href='../sanpham.php';
+		</script>";
 	}
 	
 } else {

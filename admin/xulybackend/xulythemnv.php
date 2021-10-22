@@ -7,6 +7,10 @@ if (isset($_POST['them'])) {
     $password=$_POST['password'];
     $gioitinh=$_POST['gioitinh'];
     $ngaysinh=$_POST['ngaysinh'];
+    $a = getdate();
+	$year = $a['0']; 
+	$ngay = strtotime($ngaysinh);
+	$tinhtuoi = floor(abs($a['0'] - $ngay) / (60*60*24*365));
     $dienthoai=$_POST['dienthoai_nv'];
     $diachi=$_POST['diachi_nv'];
     $quyen = $_POST['role'];
@@ -29,12 +33,18 @@ if (isset($_POST['them'])) {
 						history.back();
 					</script>";
 			}else{
-                $sql="INSERT INTO nhanvien(ten_nv, password, email_nv, gioitinh, ngaysinh, dienthoai_nv, diachi_nv, avatar, id_quyen) VALUES('$ten_nv', '$password', '$email', '$gioitinh', '$ngaysinh', '$dienthoai', '$diachi', '$file_path', '$quyen')";
+                if ($tinhtuoi < 15) {
+                    echo "<script>alert('Phải lớn hơn 15 tuổi!');
+                            history.back();
+                        </script>";
+                } else {
+                    $sql="INSERT INTO nhanvien(ten_nv, password, email_nv, gioitinh, ngaysinh, dienthoai_nv, diachi_nv, avatar, id_quyen) VALUES('$ten_nv', '$password', '$email', '$gioitinh', '$ngaysinh', '$dienthoai', '$diachi', '$file_path', '$quyen')";
 
 					$connect->query($sql);
-					echo "<script>alert('Thêm nhân viên thành công.');
-								window.location.href='../danhsachncc.php';
+					echo "<script>alert('Thêm thành công.');
+								window.location.href='../danhsachnhanvien.php';
 						</script>";
+                }
 			}
         }
 ?>

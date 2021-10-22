@@ -31,6 +31,7 @@
                   <th>Hình Thức Thanh Toán</th>
                   <th>Ngày Đặt</th>
                   <th>Trạng Thái</th>
+                  <th>Shipper</th>
                   <th>Tùy chọn</th>
                 </tr>
                 </thead>
@@ -52,17 +53,61 @@
                   <td><?php echo $kq['status']?></td>
                   <td>
                     <?php
-                      if(($kq['status']=="Đã giao") || ($kq['status']=="Nhận thành công")){?>
-                        <a href="chitietdonhang.php?id_dh=<?php echo $kq['id_order']?>" style="padding-right: 20px" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
-                        <a href="xulybackend/xoadonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
-                        <a href="./indonhang/indonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"> In</i></a>
-                     <?php } else {?>
-                      <a href="chitietdonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
-                      <a href="./indonhang/indonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"> In</i></a>
-                   <?php } ?>
-                  
-                </td>
+                      if(($kq['id_shipper']=='0') && ($kq['status']!='Đơn hàng mới')){ ?>
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#message<?php echo $kq['id_order'];?>">Chọn shipper</button>
+                      <?php } else if($kq['status']=='Đơn hàng mới') { 
+                        echo '';
+                      } else {
+                        // $sql1="SELECT * FROM orders o LEFT JOIN shipper s ON o.id_shipper = s.id_s ORDER BY id_shipper DESC";
+                        $ids = $kq['id_shipper'];
+                        $sql1="SELECT * FROM shipper WHERE id_s = '$ids'";
+                        $ketqua1=$connect->query($sql1);
+                        $kq1=$ketqua1->fetch_assoc();
+                        echo $kq1['ten_s'];
+                      }
+                    ?>
+                  </td>
+                  <td>
+                    <a href="chitietdonhang.php?id_dh=<?php echo $kq['id_order']?>" style="padding-right: 20px" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+                    <a href="xulybackend/xoadonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
+                    <a href="./indonhang/indonhang.php?id_dh=<?php echo $kq['id_order']?>" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"> In</i></a>
+                  </td>
                 </tr>
+                <!-- Modal sửa -->
+                <div class="modal fade" id="message<?php echo $kq['id_order'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
+                        <div class="modal-header" style="text-align: center;">
+                            <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Chọn shipper</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form role="form" action="xulybackend/chonshipper.php" method="POST">
+                        <div class="box-body">
+                            <div class="form-group">
+                            <label>Danh sách shipper:</label>&ensp;
+                                <select id="shipper" name="shipper">
+                                <?php
+                                  $sql2="SELECT * FROM shipper";
+                                  $ketqua2=$connect->query($sql2);
+                                  while ($kq2=$ketqua2->fetch_assoc()){ ?>
+                                    <option value="<?php echo $kq2['id_s']?>"><?php echo $kq2['ten_s'];?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box-footer" style="background-color: unset; text-align: center;">
+                        <input type="hidden" value="<?php echo $kq['id_order']?>" name="form_id">
+                        <button type="submit" class="btn btn-primary" name="sua">Chọn</button>
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                <!-- end modal sửa -->
                 <?php } ?>
               </table>
             </div>

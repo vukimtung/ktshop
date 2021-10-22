@@ -45,14 +45,13 @@
                   <td><?php echo $kq['email_cust']?></td>
                   <td><?php echo $kq['phone']?></td>
                 </tr>
-                
               </table>
             </div>
           </div>
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Chi Tiết Đơn Hàng</h3><?php } ?>
+              <h3 class="box-title">Chi Tiết Đơn Hàng</h3>
             </div>
             <div class="box-body">
               <table id="" class="table table-bordered table-striped">
@@ -68,14 +67,14 @@
                 <?php
                 include('../phantrangfrontend/connect.php');
                 $id_don = $_GET['id_dh'];
-                $sql="SELECT * FROM order_details o LEFT JOIN products p ON o.product_id = p.id_pro WHERE order_id = '$id_don'";
-                $ketqua=$connect->query($sql);
-                while ($kq=$ketqua->fetch_assoc()){ ?>
+                $sql1="SELECT * FROM order_details o LEFT JOIN products p ON o.product_id = p.id_pro WHERE order_id = '$id_don'";
+                $ketqua1=$connect->query($sql1);
+                while ($kq1=$ketqua1->fetch_assoc()){ ?>
                   <tr>
-                  <td><?php echo $kq['name_pro']?></td>
-                  <td><?php echo $kq['quantity']?></td>
-                  <td><img src="../<?php echo $kq['picture']?>" alt="hình ảnh sản phẩm" style="height: 120px; width: 120px; object-fit: cover;"></td>
-                  <td><?php echo number_format($kq['price'])?> VND</td>
+                  <td><?php echo $kq1['name_pro']?></td>
+                  <td><?php echo $kq1['quantity']?></td>
+                  <td><img src="../<?php echo $kq1['picture']?>" alt="hình ảnh sản phẩm" style="height: 120px; width: 120px; object-fit: cover;"></td>
+                  <td><?php echo number_format($kq1['unitprice'])?> VND</td>
                   <!-- <td>
                     <a href="" style="padding-right: 20px"><i class="fa fa-times" aria-hidden="true">.......</i></a>
                 </td> -->
@@ -84,12 +83,16 @@
               </table>
               <div style="display: flex;">
                 <button onclick="location.href='dsdonhang.php'" style="margin-right: 10px; " class="btn btn-default">Trở lại</button>
-               <form action="xulybackend/lamdonhang.php" method="POST">
-                <input type="hidden" name="iddh" value="<?php echo $id_don;?>">
-                 <button type="submit" name="lamdh" class="btn btn-success">Xác nhận đơn</button>
-               </form>
+               <?php
+                if($kq['status']=='Đơn hàng mới'){?>
+                  <form action="xulybackend/lamdonhang.php" method="POST">
+                    <input type="hidden" name="iddh" value="<?php echo $id_don;?>">
+                    <button type="submit" name="lamdh" class="btn btn-success">Xác nhận đơn</button>
+                  </form>
+               <?php }
+               ?>
               </div>
-             
+              <?php } ?>
             </div>
           </div>
         </div>

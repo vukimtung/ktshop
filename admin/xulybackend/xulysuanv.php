@@ -7,6 +7,10 @@ if (isset($_POST['sua'])) {
     $password=$_POST['password'];
     $gioitinh=$_POST['gioitinh'];
     $ngaysinh=$_POST['ngaysinh'];
+	$a = getdate();
+	$year = $a['0']; 
+	$ngay = strtotime($ngaysinh);
+	$tinhtuoi = floor(abs($a['0'] - $ngay) / (60*60*24*365));
     $dienthoai=$_POST['dienthoai_nv'];
     $diachi=$_POST['diachi_nv'];
     $quyen = $_POST['role'];
@@ -22,43 +26,49 @@ if (isset($_POST['sua'])) {
 				history.back();
 			</script>";
 	}else{
-		if($anh!=null){
-		$target="uploads/nhanvien/";
-		$file_path=$target.basename($_FILES['file']['name']);
-		$file_name=$_FILES['file']['name'];
-		$file_tmp=$_FILES['file']['tmp_name'];
-		$file_store="../../uploads/nhanvien/".$file_name;
-
-		move_uploaded_file($file_tmp, $file_store);
+		if ($tinhtuoi < 15) {
+			echo "<script>alert('Phải lớn hơn 15 tuổi!');
+					window.location.href='../danhsachnhanvien.php';
+				</script>";
+		} else {
+			if($anh!=null){
+				$target="uploads/nhanvien/";
+				$file_path=$target.basename($_FILES['file']['name']);
+				$file_name=$_FILES['file']['name'];
+				$file_tmp=$_FILES['file']['tmp_name'];
+				$file_store="../../uploads/nhanvien/".$file_name;
 		
-		if($quyen!=null) {
-			$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
-                dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', avatar = '$file_path', id_quyen = '$quyen' WHERE id_nv = '$newid'";
-		} else {
-			$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
-                dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', avatar = '$file_path' WHERE id_nv = '$newid'";
+				move_uploaded_file($file_tmp, $file_store);
+				
+				if($quyen!=null) {
+					$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
+						dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', avatar = '$file_path', id_quyen = '$quyen' WHERE id_nv = '$newid'";
+				} else {
+					$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
+						dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', avatar = '$file_path' WHERE id_nv = '$newid'";
+				}
+				if (mysqli_query($connect, $sql)) {
+					echo "<script>alert('Cập nhật thành công.');
+								window.location.href='../danhsachnhanvien.php';
+						</script>";
+				} else {
+				}
+			} else {
+				if($quyen!=null) {
+					$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
+						dienthoai_nv = '$dienthoai', diachi_nv = '$diachi',  id_quyen = '$quyen' WHERE id_nv = '$newid'";
+				} else {
+					$sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
+						dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', id_quyen = '$quyen' WHERE id_nv = '$newid'";
+				}
+				if (mysqli_query($connect, $sql)) {
+					echo "<script>alert('Cập nhật thành công.');
+								window.location.href='../danhsachnhanvien.php';
+						</script>";
+				} else {
+				}
+			}
 		}
-		if (mysqli_query($connect, $sql)) {
-			echo "<script>alert('Cập nhật thành công.');
-						window.location.href='../danhsachnhanvien.php';
-				</script>";
-		} else {
-		}
-	} else {
-		if($quyen!=null) {
-            $sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
-                dienthoai_nv = '$dienthoai', diachi_nv = '$diachi',  id_quyen = '$quyen' WHERE id_nv = '$newid'";
-		} else {
-            $sql="UPDATE nhanvien SET ten_nv = '$ten_nv', email_nv = '$email', password = '$password', gioitinh = '$gioitinh', ngaysinh = '$ngaysinh',
-                dienthoai_nv = '$dienthoai', diachi_nv = '$diachi', id_quyen = '$quyen' WHERE id_nv = '$newid'";
-		}
-		if (mysqli_query($connect, $sql)) {
-			echo "<script>alert('Cập nhật thành công.');
-						window.location.href='../danhsachnhanvien.php';
-				</script>";
-		} else {
-		}
-	}
 	}
 }
 

@@ -30,7 +30,7 @@ include("phantrangfrontend/connect.php");
 						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important; text-align: center;">Thông Tin Đơn Hàng Của Bạn</h4>
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
-								<tr class="table_head">
+								<tr class="table_head" style="background: linear-gradient(-180deg, rgb(242, 228, 159), rgb(244 142 151));">
 									<th class="column-1">STT</th>
 									<th class="column-2">Tên sản phẩm</th>
 									<th class="column-3">Hình ảnh</th>
@@ -53,7 +53,7 @@ include("phantrangfrontend/connect.php");
 									</td>
 									<td class="column-2"><?php echo $kq['name_pro']?></td>
 									<td class="column-3"><img src="<?php echo $kq['picture']?>" alt="hình ảnh sản phẩm" style="height: 120px; width: 120px; object-fit: cover;"></td>
-									<td class="column-4"><?php echo number_format($kq['price']);?> VND</td>
+									<td class="column-4"><?php echo number_format($kq['unitprice']);?> VND</td>
 									<td class="column-5"><?php echo $kq['quantity']?></td>
 								</tr>
 								<?php } ?>

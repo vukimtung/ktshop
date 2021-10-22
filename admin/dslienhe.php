@@ -45,7 +45,7 @@
                     <td><?php echo $kq['email']?></td>
                     <td><?php echo $kq['msg']?></td>
                     <td>
-                      <a href="xulybackend/xoalienhe.php?del_id=<?php echo $kq['id_contact']?>" style="padding-right: 20px" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
+                      <a href="xulybackend/xoalienhe.php?del_id=<?php echo $kq['id_contact']?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
                     </td>
                 </tr>
                 

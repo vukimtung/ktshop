@@ -20,7 +20,7 @@ include("phantrangfrontend/head.php");
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
-								<tr class="table_head">
+								<tr class="table_head" style="background: linear-gradient(-180deg, rgb(242, 228, 159), rgb(244 142 151));">
 									<th class="column-1">Sản Phẩm</th>
 									<th class="column-2"></th>
 									<th class="column-3">Giá</th>
@@ -106,9 +106,6 @@ include("phantrangfrontend/head.php");
 						<button onclick="location.href='thanhtoan.php'" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Đặt Hàng
 						</button>
-						<!-- <button onclick="location.href='phantrangfrontend/sessionKH.php'" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Thanh Toán
-						</button> -->
 					</div>
 				</div>
 			</div>

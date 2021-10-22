@@ -31,7 +31,7 @@ include("phantrangfrontend/head.php");
 					<?php } ?>
 				</div>
 
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+				<!-- <div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						Tất cả giá
 					</button>
@@ -46,7 +46,7 @@ include("phantrangfrontend/head.php");
 							<?php echo number_format($kq['price']);?>
 						</button>
 					<?php } ?>
-				</div>
+				</div> -->
 
 					<div class="flex-w flex-c-m m-tb-10">
                         <div class="col-12 col-md-10">
@@ -54,10 +54,11 @@ include("phantrangfrontend/head.php");
                                 <div class="card-body row no-gutters align-items-center" style="padding: 0px;">
                                     <!--end of col-->
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Từ khóa" style="border: none !important" name="tukhoa" required="Vui lòng nhập từ khóa">
+									<input class="form-control form-control-lg form-control-borderless" id="search-input" type="text" placeholder="Từ khóa" style="border: none !important" name="tukhoa">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
+										<span class="microphone"><i class="fa fa-microphone"></i></span>&ensp;
                                         <button class="btn btn-lg btn-success" type="submit" name="timsp">Tìm</button>
                                     </div>
                                     <!--end of col-->
@@ -83,7 +84,8 @@ include("phantrangfrontend/head.php");
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="<?php echo $kq['picture'];?>" alt="IMG-PRODUCT" style="height: 250px; object-fit: cover;">
+						<a href="chitietsp.php?idsp=<?php echo $kq['id_pro'];?>&iddm=<?php echo $kq['category_id'];?>">
+						<img src="<?php echo $kq['picture'];?>" alt="IMG-PRODUCT" style="height: 250px; object-fit: cover;"></a>
 
 							<a href="chitietsp.php?idsp=<?php echo $kq['id_pro'];?>&iddm=<?php echo $kq['category_id'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04"> <!--class="js-show-modal1" xem nhanh sản phẩm-->
 								Xem
@@ -97,7 +99,19 @@ include("phantrangfrontend/head.php");
 								</a>
 
 								<span class="stext-105 cl3">
-									<?php echo number_format($kq['price']);?> VND
+								<?php
+										$idg = $kq['id_giagiam'];
+										$g="SELECT * FROM giagiam WHERE id_gg = $idg";
+										$ketqua2=$connect->query($g);
+										  while($kq2=$ketqua2->fetch_assoc()) { 
+										  if(($kq['price']) > ($kq['price'] - (($kq['price'] * $kq2['phantramgiam']) / 100))) {
+											echo '<div><span style="text-decoration-line: line-through;">' . number_format($kq['price']). ' VND</span>&ensp;&ensp;' . '-'.$kq2['phantramgiam'].'%</div>';
+											echo '<span style="font-weight: bold; font-size: 16px;">' . number_format($kq['price'] - (($kq['price'] * $kq2['phantramgiam']) / 100)). ' VND</span>';
+										  } else {
+											echo number_format($kq['price']). ' VND';
+										  }
+										}
+									?>
 								</span>
 							</div>
 <!-- 

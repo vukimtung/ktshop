@@ -16,14 +16,14 @@ include('config.php');
 					<div class="right-top-bar flex-w h-full">
 						<?php
 							if (isset($_SESSION['user_email_address'])){ ?>
-							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i><?php echo $_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];?></a>
-							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>Đăng xuất</a>
+							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&ensp;<?php echo $_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];?></a>
+							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>&ensp;Đăng xuất</a>
 							<?php } else if (isset($_SESSION['email'])){ ?>
-							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i><?php echo $_SESSION['name_cust'];?></a>
-							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>Đăng xuất</a>
+							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&ensp;<?php echo $_SESSION['name_cust'];?></a>
+							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>&ensp;Đăng xuất</a>
 						<?php } else { ?>
 						<a href="taikhoan.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&nbsp;Tài khoản</a>
-					<?php } ?>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -55,9 +55,9 @@ include('config.php');
 								<a href="lienhe.php">Liên Hệ</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
+							<!-- <li class="label1" data-label1="hot">
 								<a href="covid19/index.php">Covid-19</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>	
 
@@ -111,11 +111,11 @@ include('config.php');
 							?>">
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+				<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
-				<a href="https://www.facebook.com/VKTung20" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
-					<i class="fa fa-facebook" style="color: #284ac8;"></i>
+				</a> -->
+				<a href="https://m.me/106177684946031?ref=ktshop" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<i class="fab fa-facebook-messenger"></i>
 				</a>
 			</div>
 
@@ -130,27 +130,30 @@ include('config.php');
 
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
-			<ul class="topbar-mobile">
+			<ul class="topbar-mobile" style="margin-right: -8px;">
 				<li>
 					<div class="left-top-bar">
-						
+					Đặt hàng ngay: 0394 539 094
 					</div>
 				</li>
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
 					<?php
-							if (!empty($_SESSION['email'])){ ?>
-							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i><?php echo $_SESSION['name_cust'];?></a>
-							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>Đăng xuất</a>
+							if (isset($_SESSION['user_email_address'])){ ?>
+							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&ensp;<?php echo $_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];?></a>
+							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>&ensp;Đăng xuất</a>
+							<?php } else if (isset($_SESSION['email'])){ ?>
+							<a href="thongtintk.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&ensp;<?php echo $_SESSION['name_cust'];?></a>
+							<a href="xulyfrontend/dangxuat.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-key"></i>&ensp;Đăng xuất</a>
 						<?php } else { ?>
-						<a href="taikhoan.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>Tài khoản</a>
-					<?php }?>
+						<a href="taikhoan.php" class="flex-c-m trans-04 p-lr-25"><i class="fa fa-user"></i>&nbsp;Tài khoản</a>
+						<?php } ?>
 					</div>
 				</li>
 			</ul>
 
-			<ul class="main-menu-m">
+			<ul class="main-menu-m" style="margin-right: -8px;">
 				<li>
 					<a href="index.php">Trang Chủ</a>
 				</li>
@@ -160,15 +163,11 @@ include('config.php');
 				</li>
 
 				<li>
-					<a href="thongtin.php">Thông Tin</a>
+					<a href="tintuc.php">Tin Tức</a>
 				</li>
 
 				<li>
 					<a href="lienhe.php">Liên Hệ</a>
-				</li>
-
-				<li class="label1 rs1" data-label1="hot">
-					<a href="covid19/index.php">Covid-19</a>
 				</li>
 			</ul>
 		</div>

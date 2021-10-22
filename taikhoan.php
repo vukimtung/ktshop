@@ -76,9 +76,15 @@ if (!isset($_SESSION['access_token'])) {
 							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="Mật khẩu" required="Vui lòng nhập mật khẩu."><i class="fa fa-key how-pos4 pointer-none"></i>
 						</div>
 
+						<div class="m-b-20">
+							<a href="quenmatkhau.php">Quên mật khẩu?</a>
+						</div>
+
 						<button name="login" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" style="margin-left: 30%; width: 40% !important">
 							Đăng nhập
 						</button>
+
+						
 					</form>
 					<div class="social-auth-links text-center">
 				      <?php
