@@ -10,7 +10,6 @@ $sdt = $_POST['phone'];
 $hinhthuctt = $_POST['hinhthuctt'];
 $tinhtrang = 'Đơn hàng mới';
 $ngaydat = date("d/m/Y");
-$idnv = 1;
 
 
 if ($hinhthuctt=="Tiền mặt") {
@@ -25,27 +24,23 @@ if ($hinhthuctt=="Tiền mặt") {
 		$customer_id = $kq1['id_cust'];
 	}
 
-$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status, id_nvien) 
-		VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$ngaydat', '$tinhtrang', '$idnv')";
-$connect->query($sql1);
+		$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) 
+				VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$ngaydat', '$tinhtrang')";
+		$connect->query($sql1);
 
-$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
-$ketqua2 = $connect->query($sql2);
-$kq2 = $ketqua2->fetch_assoc();
-$orderid = $kq2['id_order'];
+		$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
+		$ketqua2 = $connect->query($sql2);
+		$kq2 = $ketqua2->fetch_assoc();
+		$orderid = $kq2['id_order'];
 
 foreach ($_SESSION['cart'] as $key => $value) {
 	$idsp=$value['item_id'];
 	$soluong=$value['quantity'];
+	$dongia = $value['item_price'];
 
-	$sql3="INSERT INTO order_details(order_id, product_id, quantity) VALUES('$orderid', '$idsp', '$soluong')";
+	$sql3="INSERT INTO order_details(order_id, product_id, quantity, unitprice) VALUES('$orderid', '$idsp', '$soluong', '$dongia')";
 
 	$connect->query($sql3);
-	// echo $idsp;
-	// 	echo '<br>';
-	// 	echo $soluong;
-	// 	echo '<br>';
-	// 	echo $orderid;
 }
 		echo "<script>
 				alert('Đặt hàng thành công');
@@ -58,10 +53,11 @@ foreach ($_SESSION['cart'] as $key => $value) {
 }
 
 if (isset($_POST['ttonline'])) {
-	$_SESSION['total']=$total * 0.000044;
+	// $_SESSION['total']=$total * 0.000044;
+	$_SESSION['total']=$total;
 	$_SESSION['address']=$diachi;
 	$_SESSION['phone']=$sdt;
-	$_SESSION['payment']="Palpay";
+	$_SESSION['payment']="Paypal";
 	$_SESSION['status']=$tinhtrang;
 	header('location: ../phantrangfrontend/paypal.php');
 	}

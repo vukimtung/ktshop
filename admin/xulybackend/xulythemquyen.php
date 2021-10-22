@@ -7,5 +7,7 @@ $description=$_POST['description'];
 $sql="INSERT INTO roles(ten_r, mota_r) VALUES('$name_role', '$description')";
 
 $connect->query($sql);
-header('location: ../danhsachquyen.php');
+echo "<script>alert('Thêm thành công.');
+            window.location.href='../danhsachquyen.php';
+    </script>";
 ?>

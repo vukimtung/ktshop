@@ -22,7 +22,7 @@ include("phantrangfrontend/head.php");
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
-								<tr class="table_head">
+								<tr class="table_head" style="background: linear-gradient(-180deg, rgb(242, 228, 159), rgb(244 142 151));">
 									<th class="column-1">Sản Phẩm</th>
 									<th class="column-2"></th>
 									<th class="column-3">Giá</th>
@@ -63,7 +63,7 @@ include("phantrangfrontend/head.php");
 				</div>
 
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm" style="border-radius: 20px;">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
 						<h4 class="mtext-109 cl2 p-b-30">
 							Thông Tin Đặt Hàng
 						</h4>
@@ -119,7 +119,7 @@ include("phantrangfrontend/head.php");
 							Thanh Toán
 						</button><br>
 						<button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" name="ttonline">
-							Thanh Toán Online Paypal
+							Thanh Toán Paypal &ensp;<img src="./images/icons/icon-pay-01.png"></img>
 						</button>
 						
 					</form>

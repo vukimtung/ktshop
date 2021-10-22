@@ -50,7 +50,22 @@ include("phantrangfrontend/head.php");
 						</h4>
 
 						<span class="mtext-106 cl2">
-							Giá: <?php echo number_format($kq['price']). ' VND';?>
+							<?php
+								$idg = $kq['id_giagiam'];
+								$cart_price = 0;
+								$g="SELECT * FROM giagiam WHERE id_gg = $idg";
+								$ketqua2=$connect->query($g);
+									while($kq2=$ketqua2->fetch_assoc()) { 
+									if(($kq['price']) > ($kq['price'] - (($kq['price'] * $kq2['phantramgiam']) / 100))) {
+									echo '<div>Giá: &ensp;<span style="text-decoration-line: line-through;">' . number_format($kq['price']). ' VND</span>&ensp;&ensp;' . '-'.$kq2['phantramgiam'].'%</div>';
+									echo '<span style="font-weight: bold; font-size: 21px;color: red;">' . number_format($kq['price'] - (($kq['price'] * $kq2['phantramgiam']) / 100)). ' VND</span>';
+									$cart_price = $kq['price'] - (($kq['price'] * $kq2['phantramgiam']) / 100);
+									} else {
+									echo 'Giá: &ensp;<span style="font-weight: bold; font-size: 21px;color: red;">' . number_format($kq['price']). ' VND</span>';
+									$cart_price = $kq['price'];
+									}
+								}
+							?>
 						</span><br><br>
 						<span class="mtext-106 cl2">
 							Đơn vị tính: <?php echo $kq['unit'];?>
@@ -92,7 +107,7 @@ include("phantrangfrontend/head.php");
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div> -->
-									<button onclick="location.href='xulyfrontend/themgiohang.php?cart_id=<?php echo $kq['id_pro']?>&cart_name=<?php echo $kq['name_pro']?>&cart_price=<?php echo $kq['price']?>&&cart_picture=<?php echo $kq['picture']?>'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" name="addtocart">
+									<button onclick="location.href='xulyfrontend/themgiohang.php?cart_id=<?php echo $kq['id_pro']?>&cart_name=<?php echo $kq['name_pro']?>&cart_price=<?php echo $cart_price;?>&&cart_picture=<?php echo $kq['picture']?>'" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" name="addtocart">
 										Thêm Giỏ Hàng
 									</button>
 								</div>
@@ -261,7 +276,7 @@ include("phantrangfrontend/head.php");
 	</section>
 
 
-	<!-- Related Products -->
+	<!-- Sản phẩm cùng loại -->
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 			<div class="p-b-45">
@@ -285,9 +300,10 @@ include("phantrangfrontend/head.php");
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="<?php echo $kqua['picture'];?>" alt="IMG-PRODUCT" style="height: 250px; object-fit: cover;">
+							<a href="chitietsp.php?idsp=<?php echo $kqua['id_pro'];?>&iddm=<?php echo $kqua['category_id'];?>">
+								<img src="<?php echo $kqua['picture'];?>" alt="IMG-PRODUCT" style="height: 250px; object-fit: cover;"></a>
 
-								<a href="chitietsp.php?idsp=<?php echo $kq['id_pro'];?>&iddm=<?php echo $kq['category_id'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								<a href="chitietsp.php?idsp=<?php echo $kqua['id_pro'];?>&iddm=<?php echo $kqua['category_id'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Xem
 								</a>
 							</div>
@@ -299,7 +315,20 @@ include("phantrangfrontend/head.php");
 									</a>
 
 									<span class="stext-105 cl3">
-										<?php echo number_format($kqua['price']);?> VND
+										<!-- <?php echo number_format($kqua['price']);?> VND -->
+										<?php
+										$idgg = $kqua['id_giagiam'];
+										$gg="SELECT * FROM giagiam WHERE id_gg = $idgg";
+										$ketqua3=$connect->query($gg);
+										  while($kq3=$ketqua3->fetch_assoc()) { 
+										  if(($kqua['price']) > ($kqua['price'] - (($kqua['price'] * $kq3['phantramgiam']) / 100))) {
+											echo '<div><span style="text-decoration-line: line-through;">' . number_format($kqua['price']). ' VND</span>&ensp;&ensp;' . '-'.$kq3['phantramgiam'].'%</div>';
+											echo '<span style="font-weight: bold; font-size: 16px;">' . number_format($kqua['price'] - (($kqua['price'] * $kq3['phantramgiam']) / 100)). ' VND</span>';
+										  } else {
+											echo number_format($kqua['price']). ' VND';
+										  }
+										}
+									?>
 									</span>
 								</div>
 

@@ -8,8 +8,8 @@ if (isset($_POST['them'])) {
 
     $sql="INSERT INTO nhacungcap(ten_n, dienthoai_n, diachi_n) VALUES('$ten_n', '$dienthoai_n', '$diachi_n')";
     $connect->query($sql);
-    echo "<script>alert('Thêm nhà cung cấp thành công.');
-                window.location.href='../danhsachnhanvien.php';
+    echo "<script>alert('Thêm thành công.');
+                history.back();
         </script>";
         }
 ?>

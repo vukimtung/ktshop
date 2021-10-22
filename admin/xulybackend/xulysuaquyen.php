@@ -7,9 +7,10 @@ if (isset($_POST['sua'])) {
 		$sql="UPDATE roles SET ten_r = '$name_r', mota_r = '$mota' WHERE id_r = '$newid'";
 
 		if (mysqli_query($connect, $sql)) {
-			header('location: ../danhsachquyen.php');
+			echo "<script>alert('Cập nhật thành công.');
+						window.location.href='../danhsachquyen.php';
+				</script>";
 		} else {
-			header('location: ../suaquyen.php');
 		}
 } else {
 

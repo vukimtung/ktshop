@@ -21,7 +21,11 @@
             <div class="box-header">
                 <h1 style="text-align: center; color: red; font-weight: bold;">Danh Sách Quyền </h1>
                 <ol class="breadcrumb">
-                    <li><a href="themquyen.php" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Thêm quyền</i></a></li>
+                    <li>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                        Thêm quyền
+                    </button>
+                    </li>
                 </ol>
             </div>
             <div class="box-body">
@@ -48,12 +52,78 @@
                   <td><?php echo $kq['mota_r']?></td>
                   <td>
                     <a href="xulybackend/xoaquyen.php?del_id=<?php echo $kq['id_r']?>" style="padding-right: 20px" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
-                    <a href="suaquyen.php?up_id=<?php echo $kq['id_r']?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"> Sửa</i></a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#message<?php echo $kq['id_r'];?>"><i class="fa fa-eye" aria-hidden="true"> Sửa</i></button>
                   </td>
                 </tr>
+
+                <!-- Modal sửa -->
+                <div class="modal fade" id="message<?php echo $kq['id_r'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
+                        <div class="modal-header" style="text-align: center;">
+                            <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Sửa Quyền</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <form role="form" action="xulybackend/xulysuaquyen.php" method="POST" enctype="multipart/form-data">
+                            <div class="box-body">
+                              <div class="form-group">
+                                <label for="name_pro">Tên quyền</label>
+                                <input type="text" class="form-control" id="name_r" name="name_r" value="<?php echo $kq['ten_r']?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="description">Mô tả quyền</label>
+                                <textarea class="form-control" id="description" name="description" rows="10" placeholder="Nhập mô tả quyền" required><?php echo $kq['mota_r']?></textarea>
+                              </div>
+                            <div class="box-footer" style="background-color: unset; text-align: center;">
+                              <input type="hidden" value="<?php echo $kq['id_r']?>" name="form_id">
+                              <button type="submit" class="btn btn-primary" name="sua">Sửa</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                <!-- end modal sửa -->
+
                 <?php } ?>
               </table>
             </div>
+
+            <!-- Modal thêm -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
+                <div class="modal-header" style="text-align: center;">
+                    <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Thêm Quyền</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form role="form" action="xulybackend/xulythemquyen.php" method="POST">
+                    <div class="box-body">
+                      <div class="form-group">
+                        <label for="name_cate">Tên quyền</label>
+                        <input type="text" class="form-control" id="name_role" name="name_role" placeholder="Nhập tên quyền" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Mô tả quyền</label>
+                        <textarea class="form-control" id="description" name="description" rows="10" placeholder="Nhập mô tả quyền" required></textarea>
+                      </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer" style="background-color: unset; text-align: center;">
+                      <button type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+              </form>
+                </div>
+            </div>
+            </div>
+            <!-- end modal thêm -->
+
           </div>
         </div>
       </div>

@@ -34,14 +34,15 @@
       $ketqua=$connect->query($sql);
       while ($kq=$ketqua->fetch_assoc()){ ?>
       <label for=""><strong>Tên khách hàng: </strong><?php echo $kq['name_cust']?></label><br/>
-      <label for=""><strong>Số điện thoại: </strong><?php echo $kq['phone']?></label><br/>
-      <label for=""><strong>Địa chỉ: </strong><?php echo $kq['address']?></label><br/><br/>
+      <label for=""><strong>Số điện thoại giao hàng: </strong><?php echo $kq['phone']?></label><br/>
+      <label for=""><strong>Địa chỉ giao hàng: </strong><?php echo $kq['address']?></label><br/><br/>
     </div>
     <table class="TableData">
       <tr>
         <th>STT</th>
         <th>Sản phẩm</th>
         <th>Đơn giá</th>
+        <th>Giá giảm</th>
         <th>Số lượng</th>
         <th>Thành tiền</th>
       </tr>
@@ -55,16 +56,17 @@
         <td class="cotSTT"><?php echo $stt;?></td>
         <td class="cotTenSanPham"><?php echo $kq1['name_pro']?></td>
         <td class="cotGia"><?php echo number_format($kq1['price'])?> VND</td>
+        <td class="cotGiagiam"><?php echo number_format($kq1['unitprice'])?> VND</td>
         <td class="cotSoLuong"><?php echo $kq1['quantity']?></td>
         <td class="cotSo"><?php 
-        $t = $kq1['price'] * $kq1['quantity'];
+        $t = $kq1['unitprice'] * $kq1['quantity'];
         echo number_format($t);?> VND</td>
       </tr>
-      <tr>
-        <td colspan="4" class="tong">Tổng cộng</td>
-        <td class="cotSo"><?php echo number_format($kq['total'])?> VND</td>
-      </tr>
       <?php } ?>
+      <tr>
+        <td colspan="5" class="tong">Tổng cộng</td>
+        <td class="cottt"><?php echo number_format($kq['total'])?> VND</td>
+      </tr>
     </table><br/><br/>
     <div class="row">
         <!-- accepted payments column -->
