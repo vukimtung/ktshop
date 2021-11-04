@@ -1,0 +1,183 @@
+/* Skill Bar */
+#skills {
+  margin-top: 40px;
+}
+.skills .progress {
+  height: 100px;
+  display: block;
+  background: none;
+}
+.skills .progress .skills {
+  padding: 10px 0;
+  /* margin: 0 0 6px 0; */
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+}
+.skills .progress .skills .s1 {
+  float: left;
+  color: green;
+  font-size: 40px;
+}
+
+.skills .progress .skills .s5 {
+  float: right;
+  color: green;
+  font-size: 40px;
+}
+.skills .progress-bar-wrap {
+  background: #dce8f8;
+  margin-top: -8px;
+}
+
+@media (min-width: 1024px) {
+  .skills .progress .skills .s2 {
+    margin: 0px 0px 0px -20px;
+    position: absolute;
+    color: green;
+    font-size: 40px;
+  }
+  .skills .progress .skills .s3 {
+    margin: 0px 0px 0px 250px;
+    position: absolute;
+    color: green;
+    font-size: 40px;
+  }
+  .skills .progress .skills .s4 {
+    margin: 0px 0px 0px 550px;
+    color: green;
+    font-size: 40px;
+  }
+
+  .t1 {
+    float: left;
+    font-size: 18px;
+  }
+
+  .t2 {
+    margin: 0px 0px 0px -85px;
+    position: absolute;
+    font-size: 18px;
+  }
+  .t3 {
+    margin: 0px 0px 0px 200px;
+    position: absolute;
+    font-size: 18px;
+  }
+  .t4 {
+    margin: 0px 0px 0px 500px;
+    font-size: 18px;
+  }
+
+  .t5 {
+    float: right;
+    font-size: 18px;
+  }
+
+  .skills .progress-bar1 {
+    width: 30px;
+    height: 20px;
+    background-color: green;
+  }
+  .skills .progress-bar2 {
+    width: 300px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar3 {
+    width: 585px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar4 {
+    width: 875px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar5 {
+    width: 1210px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+}
+
+@media (min-width: 768px) {
+  .skills .progress .skills .s2 {
+    margin: 0px 0px 0px -20px;
+    position: absolute;
+    color: green;
+    font-size: 40px;
+  }
+  .skills .progress .skills .s3 {
+    margin: 0px 0px 0px 250px;
+    position: absolute;
+    color: green;
+    font-size: 40px;
+  }
+  .skills .progress .skills .s4 {
+    margin: 0px 0px 0px 550px;
+    color: green;
+    font-size: 40px;
+  }
+
+  .t1 {
+    float: left;
+    font-size: 18px;
+  }
+
+  .t2 {
+    margin: 0px 0px 0px -85px;
+    position: absolute;
+    font-size: 18px;
+  }
+  .t3 {
+    margin: 0px 0px 0px 200px;
+    position: absolute;
+    font-size: 18px;
+  }
+  .t4 {
+    margin: 0px 0px 0px 500px;
+    font-size: 18px;
+  }
+
+  .t5 {
+    float: right;
+    font-size: 18px;
+  }
+
+  .skills .progress-bar1 {
+    width: 30px;
+    height: 20px;
+    background-color: green;
+  }
+  .skills .progress-bar2 {
+    width: 300px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar3 {
+    width: 585px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar4 {
+    width: 875px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+  .skills .progress-bar5 {
+    width: 1210px;
+    height: 20px;
+    transition: 0.9s;
+    background-color: green;
+  }
+}

@@ -6,9 +6,10 @@ if (isset($_POST['sua'])) {
 		$sql="UPDATE categories SET name_cate = '$name_cate' WHERE id_cate = '$newid'";
 
 		if (mysqli_query($connect, $sql)) {
-			header('location: ../danhmucsp.php');
+			echo "<script>alert('Cập nhật thành công.');
+                window.location.href='../danhmucsp.php';
+            </script>";
 		} else {
-			header('location: ../suadanhmuc.php');
 		}
 } else {
 

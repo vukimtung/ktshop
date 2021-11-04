@@ -3,16 +3,14 @@ include('../phantrangfrontend/connect.php');
 session_start();
 	if (isset($_GET['idkh']) ) {
 		$cus_id=$_GET['idkh'];
-		// $total=$_SESSION['total'] / 0.000044;
 		$total = $_GET['gia'];
 		$diachi=$_SESSION['address'];
 		$sdt=$_SESSION['phone'];
 		$paypal=$_SESSION['payment'];
-		$ngaydat = date("d/m/Y");
 		$tinhtrang=$_SESSION['status'];
 
-		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) 
-			VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$ngaydat', '$tinhtrang')";
+		$sql = "INSERT INTO orders(customer_id, address, phone, total, payment, status) 
+			VALUES('$cus_id','$diachi','$sdt', '$total', '$paypal', '$tinhtrang')";
 		$connect->query($sql);
 
 		$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";

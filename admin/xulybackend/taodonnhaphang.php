@@ -9,13 +9,12 @@ if (isset($_POST['them'])) {
   $dvt=$_POST['dvt'];
   $ncc=$_POST['ncc'];
   $thanhtien = $sluong * $dgia;
-  $ngaynhap = date("d/m/Y");
   $idnv = 4;
 
 
    
 
-  $sql="INSERT INTO donnhaphang(id_ncc, id_nvien, thanhtien, ngaynhap) VALUES('$ncc', '$idnv', '$thanhtien', '$ngaynhap')";
+  $sql="INSERT INTO donnhaphang(id_ncc, id_nvien, thanhtien) VALUES('$ncc', '$idnv', '$thanhtien')";
   $connect->query($sql);
 
   $sql1 = "SELECT id_donnhap FROM donnhaphang order by id_donnhap DESC limit 1";

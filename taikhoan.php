@@ -61,7 +61,7 @@ if (!isset($_SESSION['access_token'])) {
 	<section class="bg0 p-t-104 p-b-116">
 		<div class="container">
 			<div class="flex-w flex-tr">
-				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center" style="border: 1px solid #9e9e9e;border-radius: 10px;">
 					<form action="xulyfrontend/dangnhap.php" method="POST">
 						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important;">
 							Đăng Nhập
@@ -123,7 +123,7 @@ if (!isset($_SESSION['access_token'])) {
     				</div>
 				</div>
 
-				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md txt-center" style="border: 1px solid #9e9e9e;border-radius: 10px;">
 					<form action="xulyfrontend/dangky.php" method="POST">
 						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important;">
 							Đăng Ký

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <?php 
-  include("phantrangadmin/head.php");
-  include("phantrangadmin/session.php");
+  include("phantrangnhanvien/head.php");
+  include("phantrangnhanvien/session.php");
 ?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <?php 
-  include("phantrangadmin/header.php");
-  include("phantrangadmin/aside.php");
+  include("phantrangnhanvien/header.php");
+  include("phantrangnhanvien/aside.php");
   ?>
 
   <div class="content-wrapper">
@@ -19,10 +19,10 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Danh Sách Liên Hệ</h3>
+              <h1 style="text-align: center; color: red; font-weight: bold;">Danh Sách Liên Hệ </h1>
             </div>
             <div class="box-body">
-              <table id="" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>STT</th>
@@ -45,7 +45,7 @@
                     <td><?php echo $kq['email']?></td>
                     <td><?php echo $kq['msg']?></td>
                     <td>
-                      <a href="xulybackend/xoalienhe.php?del_id=<?php echo $kq['id_contact']?>" style="padding-right: 20px"><i class="fa fa-times" aria-hidden="true">Xóa</i></a>
+                      <a href="xulybackend/xoalienhe.php?del_id=<?php echo $kq['id_contact']?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
                     </td>
                 </tr>
                 
@@ -58,7 +58,7 @@
     </section>
   </div>
 <?php
-include('phantrangadmin/footer.php')
+include('phantrangnhanvien/footer.php')
 ?>
 </body>
 </html>

@@ -6,7 +6,9 @@ session_start();
 	if (mysqli_query($connect,$sql)) {
 		$sql2 = "DELETE FROM chitietdonnhap WHERE id_donnhap='$newid'";
 		$connect->query($sql2);
-        header('location: ../dsdonnhaphang.php');
+		echo "<script>alert('Xóa phiếu nhập hàng thành công.');
+						window.location.href='../dsdonnhaphang.php';
+				</script>";
 	} else {
 
 	}

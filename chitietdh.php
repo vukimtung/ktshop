@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <title>Chi Tiết Đơn Hàng || KT-Cake</title>
+
+<link href="css/chitietdh.css" rel="stylesheet">
+
 <?php 
 session_start();
 include("phantrangfrontend/head.php");
 include("phantrangfrontend/sessionKH.php");
 include("phantrangfrontend/connect.php");
 ?>
+</head>
 
 <body class="animsition">
 	
@@ -21,12 +26,93 @@ include("phantrangfrontend/connect.php");
 		</h2>
 	</section>	
 
+	<!-- Skill Section -->
+	<section id="skills" class="skills section-bg">
+            <div class="container">
+				<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important; text-align: center;">Trạng Thái Đơn Hàng</h4>
+                <div class="row skills-content m-t-30">
+                    <div class="col-lg-12" >
+                        <div class="progress">
+							<?php
+								$id_dh = $_GET['iddh'];
+								$sql1="SELECT * FROM orders WHERE id_order = '$id_dh'";
+								$ketqua1=$connect->query($sql1);
+								$kq1=$ketqua1->fetch_assoc();
+								if($kq1['status']=='Đơn hàng mới') {
+							?>
+                            <span class="skills">
+								<span class="s1"><i class="fa fa-clipboard-check"></i></span>
+								<span class="s2"><i class="fa fa-clock-o"></i></i></span>
+								<span class="s3"><i class="fa fa-shipping-fast"></i></span>
+								<span class="s4"><i class="fa fa-box"></i></span>
+								<span class="s5"><i class="fa fa-check-double"></i></span>
+							</span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar1"></div>
+                            </div>
+							<?php } elseif($kq1['status']=='Đã xác nhận') {?>
+								<span class="skills">
+								<span class="s1"><i class="fa fa-clipboard-check"></i></span>
+								<span class="s2"><i class="fa fa-clock-o"></i></i></span>
+								<span class="s3"><i class="fa fa-shipping-fast"></i></span>
+								<span class="s4"><i class="fa fa-box"></i></span>
+								<span class="s5"><i class="fa fa-check-double"></i></span>
+							</span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar2"></div>
+                            </div>
+							<?php } elseif($kq1['status']=='Đang giao') {?>
+								<span class="skills">
+								<span class="s1"><i class="fa fa-clipboard-check"></i></span>
+								<span class="s2"><i class="fa fa-clock-o"></i></i></span>
+								<span class="s3"><i class="fa fa-shipping-fast"></i></span>
+								<span class="s4"><i class="fa fa-box"></i></span>
+								<span class="s5"><i class="fa fa-check-double"></i></span>
+							</span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar3"></div>
+                            </div>
+							<?php } elseif($kq1['status']=='Đã giao') {?>
+								<span class="skills">
+								<span class="s1"><i class="fa fa-clipboard-check"></i></span>
+								<span class="s2"><i class="fa fa-clock-o"></i></i></span>
+								<span class="s3"><i class="fa fa-shipping-fast"></i></span>
+								<span class="s4"><i class="fa fa-box"></i></span>
+								<span class="s5"><i class="fa fa-check-double"></i></span>
+							</span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar4"></div>
+                            </div>
+							<?php } elseif($kq1['status']=='Nhận thành công') {?>
+							<span class="skills">
+								<span class="s1"><i class="fa fa-clipboard-check"></i></span>
+								<span class="s2"><i class="fa fa-clock-o"></i></i></span>
+								<span class="s3"><i class="fa fa-shipping-fast"></i></span>
+								<span class="s4"><i class="fa fa-box"></i></span>
+								<span class="s5"><i class="fa fa-check-double"></i></span>
+							</span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar5"></div>
+                            </div>
+								<?php } else {} ?>
+								<div style="margin-top:10px;">
+									<span class="t1">Chờ xác nhận</span>
+									<span class="t2">Đã xác nhận</span>
+									<span class="t3">Đang giao</span>
+									<span class="t4">Đã giao</span>
+									<span class="t5">Đã nhận</span>
+								</div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Skill Section -->
 
 	<!-- Content page -->
-	<section class="bg0 p-t-104 p-b-116">
+	<section class="bg0 p-t-50">
 			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-					<div class="m-l-25 m-r--38 m-lr-0-xl">
+				<div class="col-lg-10 col-xl-8 m-lr-auto m-b-35">
+					<div class=" m-lr-0-xl">
 						<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important; text-align: center;">Thông Tin Đơn Hàng Của Bạn</h4>
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
@@ -47,7 +133,7 @@ include("phantrangfrontend/connect.php");
 					                	$stt ++;
 					                ?>
 
-								<tr class="table_row">
+								<tr class="table_row" style="border-bottom: 2px solid white;">
 									<td class="column-1">
 											<?php echo $stt;?>
 									</td>
@@ -62,6 +148,27 @@ include("phantrangfrontend/connect.php");
 					</div>
 				</div>
 			</div>
+
+			<?php
+				$iddh = $_GET['iddh'];
+				$sql1="SELECT * FROM orders o LEFT JOIN shipper s ON o.id_shipper = s.id_s WHERE id_order = '$iddh'";
+				$ketqua1=$connect->query($sql1);
+				$kq1=$ketqua1->fetch_assoc();
+				if(isset($kq1['id_s'])){
+			?>
+				<div class="row">
+					<div class="col-lg-10 col-xl-8 m-lr-auto m-b-35">
+						<div class=" m-lr-0-xl">
+							<h4 class="" style="font-family: Philosopher, sans-serif !important; font-weight: bold !important;">Thông Tin Shipper</h4>
+							<div class="">
+								<lable style="font-weight: bold;">Họ Tên: </lable><?php echo $kq1['ten_s']?><br>
+								<lable style="font-weight: bold;">Số Điện Thoại: </lable><?php echo $kq1['dienthoai_s']?><br>
+								<lable style="font-weight: bold;">Email: </lable><?php echo $kq1['email_s']?><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
 	</section>	
 	
 	<?php 

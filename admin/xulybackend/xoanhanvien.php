@@ -3,7 +3,9 @@
 	$newid=$_GET['del_id'];
 	$sql="DELETE FROM nhanvien WHERE id_nv='$newid'";
 	if (mysqli_query($connect,$sql)) {
-		header('location: ../danhsachnhanvien.php');
+		echo "<script>alert('Xóa nhân viên thành công.');
+						window.location.href='../danhsachnhanvien.php';
+				</script>";
 	}
 
 ?>

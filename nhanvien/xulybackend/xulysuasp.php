@@ -4,6 +4,7 @@ if (isset($_POST['sua'])) {
 	$newid=$_POST['form_id'];
 	$name_pro=$_POST['name_pro'];
 	$price=$_POST['price'];
+	$giamgia1 = $_POST['giamgia1'];
 	$description=$_POST['description'];
 	$unit=$_POST['unit'];
 	$category=$_POST['category'];
@@ -18,25 +19,28 @@ if (isset($_POST['sua'])) {
 
 		move_uploaded_file($file_tmp, $file_store);
 		if($unit!=null) {
-			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', description = '$description', unit = '$unit', picture = '$file_path', category_id = '$category' WHERE id_pro = '$newid'";
+			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', id_giagiam = '$giamgia1', description = '$description', unit = '$unit', picture = '$file_path', category_id = '$category' WHERE id_pro = '$newid'";
 		} else {
-			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', description = '$description', picture = '$file_path', category_id = '$category' WHERE id_pro = '$newid'";
+			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', id_giagiam = '$giamgia1', description = '$description', picture = '$file_path', category_id = '$category' WHERE id_pro = '$newid'";
 		}
 		if (mysqli_query($connect, $sql)) {
-			header('location: ../danhsachsp.php');
+			echo "<script>alert('Cập nhật thành công.');
+						window.location.href='../danhsachsp.php';
+				</script>";
 		} else {
-			header('location: ../suasanpham.php');
+			
 		}
 	} else {
 		if($unit!=null) {
-			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', description = '$description', unit = '$unit', category_id = '$category' WHERE id_pro = '$newid'";
+			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price',id_giagiam = '$giamgia1', description = '$description', unit = '$unit', category_id = '$category' WHERE id_pro = '$newid'";
 		} else {
-			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price', description = '$description', category_id = '$category' WHERE id_pro = '$newid'";
+			$sql="UPDATE products SET name_pro = '$name_pro', price = '$price',id_giagiam = '$giamgia1', description = '$description', category_id = '$category' WHERE id_pro = '$newid'";
 		}
 		if (mysqli_query($connect, $sql)) {
-			header('location: ../danhsachsp.php');
+			echo "<script>alert('Cập nhật thành công.');
+						window.location.href='../danhsachsp.php';
+				</script>";
 		} else {
-			header('location: ../suasanpham.php');
 		}
 	}
 	

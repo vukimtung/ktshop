@@ -5,14 +5,18 @@ include('../phantrangfrontend/connect.php');
 
 
 $total = $_POST['total'];
-$diachi = $_POST['address'];
+$iddc = $_POST['address'];
 $sdt = $_POST['phone'];
-$hinhthuctt = $_POST['hinhthuctt'];
+$hinhthuctt = "Tiền mặt";
 $tinhtrang = 'Đơn hàng mới';
-$ngaydat = date("d/m/Y");
+
+$sql3 = "SELECT * FROM dc_khachhang WHERE id_dc = '$iddc'";
+		$ketqua3 = $connect->query($sql3);
+		$kq3 = $ketqua3->fetch_assoc();
+		$diachi = $kq3['diachi_kh'];
 
 
-if ($hinhthuctt=="Tiền mặt") {
+if (isset($_POST['thanhtoan'])) {
 
 	if (!empty($_SESSION['customer_id'])) {
 		$customer_id = $_SESSION['customer_id'];
@@ -24,8 +28,8 @@ if ($hinhthuctt=="Tiền mặt") {
 		$customer_id = $kq1['id_cust'];
 	}
 
-		$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, date_order, status) 
-				VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$ngaydat', '$tinhtrang')";
+		$sql1 = "INSERT INTO orders(customer_id, address, phone, total, payment, status) 
+				VALUES('$customer_id','$diachi','$sdt', '$total', '$hinhthuctt', '$tinhtrang')";
 		$connect->query($sql1);
 
 		$sql2 = "SELECT id_order FROM orders order by id_order DESC limit 1";
@@ -53,7 +57,6 @@ foreach ($_SESSION['cart'] as $key => $value) {
 }
 
 if (isset($_POST['ttonline'])) {
-	// $_SESSION['total']=$total * 0.000044;
 	$_SESSION['total']=$total;
 	$_SESSION['address']=$diachi;
 	$_SESSION['phone']=$sdt;
@@ -61,8 +64,5 @@ if (isset($_POST['ttonline'])) {
 	$_SESSION['status']=$tinhtrang;
 	header('location: ../phantrangfrontend/paypal.php');
 	}
-		// if (isset($_POST['thanhtoan'])) {
-		// 	unset($_SESSION['cart']);
-		// }
 
 ?>

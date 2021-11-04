@@ -9,10 +9,12 @@ include("phantrangfrontend/head.php");
 	
 	<?php
 	include("phantrangfrontend/header.php");
-	?><br><br><br>
+	?>
+
+	
 	<!-- Product -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92">
-		<h2 class="ltext-105 txt-center" style="color: #515050;">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/slider3.jpg');">
+		<h2 class="ltext-105 txt-center" style="color: #d10909;">
 			Sản phẩm chứa từ khóa "<?php 
 				$key = $_POST['tukhoa'];
  				echo $key;
