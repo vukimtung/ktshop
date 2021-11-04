@@ -195,7 +195,7 @@
             $sql13="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%$t%') AND (status !='Đã hủy')";
             $ketqua13=$connect->query($sql13);
             while($kq13=$ketqua13->fetch_assoc()) {
-              $sql133="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE created_at LIKE '%$t%'";
+              $sql133="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE ngaynhap LIKE '%$t%'";
               $ketqua133=$connect->query($sql133);
               while($kq133=$ketqua133->fetch_assoc()) {
           ?>
@@ -238,7 +238,7 @@
               $sql111="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%-$th-%') AND (date_order LIKE '$namt-%') AND (status !='Đã hủy')";
               $ketqua111=$connect->query($sql111);
               while($kq111=$ketqua111->fetch_assoc()) {
-                $sql112="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (created_at LIKE '%-$th-%') AND (created_at LIKE '$namt-%')";
+                $sql112="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (ngaynhap LIKE '%-$th-%') AND (ngaynhap LIKE '$namt-%')";
                 $ketqua112=$connect->query($sql112);
                 while($kq112=$ketqua112->fetch_assoc()) {
             ?>
@@ -276,16 +276,16 @@
               $namq = $_POST['namq'];
               if($q=='I') {
                 $sql122="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%-01-%') OR (date_order LIKE '%-02-%') OR (date_order LIKE '%-03-%') AND (date_order LIKE '$namq-%') AND (status !='Đã hủy')";
-                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (created_at LIKE '%-01-%') OR (created_at LIKE '%-02-%') OR (created_at LIKE '%-03-%') AND (created_at LIKE '$namq-%')";
+                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (ngaynhap LIKE '%-01-%') OR (ngaynhap LIKE '%-02-%') OR (ngaynhap LIKE '%-03-%') AND (ngaynhap LIKE '$namq-%')";
               } elseif ($q=='II') {
                 $sql122="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%-04-%') OR (date_order LIKE '%-04-%') OR (date_order LIKE '%-06-%') AND (date_order LIKE '$namq-%') AND (status !='Đã hủy')";
-                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (created_at LIKE '%-04-%') OR (created_at LIKE '%-05-%') OR (created_at LIKE '%-06-%') AND (created_at LIKE '$namq-%')";
+                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (ngaynhap LIKE '%-04-%') OR (ngaynhap LIKE '%-05-%') OR (ngaynhap LIKE '%-06-%') AND (ngaynhap LIKE '$namq-%')";
               } elseif($q=='III') {
                 $sql122="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%-07-%') OR (date_order LIKE '%-08-%') OR (date_order LIKE '%-09-%') AND (date_order LIKE '$namq-%') AND (status !='Đã hủy')";
-                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (created_at LIKE '%-07-%') OR (created_at LIKE '%-08-%') OR (created_at LIKE '%-09-%') AND (created_at LIKE '$namq-%')";
+                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (ngaynhap LIKE '%-07-%') OR (ngaynhap LIKE '%-08-%') OR (ngaynhap LIKE '%-09-%') AND (ngaynhap LIKE '$namq-%')";
               } else {
                 $sql122="SELECT *, SUM(total) as tt FROM orders WHERE (date_order LIKE '%-10-%') OR (date_order LIKE '%-11-%') OR (date_order LIKE '%-12-%') AND (date_order LIKE '$namq-%') AND (status !='Đã hủy')";
-                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (created_at LIKE '%-10-%') OR (created_at LIKE '%-11-%') OR (created_at LIKE '%-12-%') AND (created_at LIKE '$namq-%')";
+                $sql123="SELECT *, SUM(thanhtien) as t FROM donnhaphang WHERE (ngaynhap LIKE '%-10-%') OR (ngaynhap LIKE '%-11-%') OR (ngaynhap LIKE '%-12-%') AND (ngaynhap LIKE '$namq-%')";
               }
               $ketqua122=$connect->query($sql122);
               while($kq122=$ketqua122->fetch_assoc()) {

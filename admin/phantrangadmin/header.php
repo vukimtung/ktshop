@@ -69,21 +69,21 @@
                       $sql="SELECT * FROM orders WHERE status = 'Đơn hàng mới'";
                       $ketqua=$connect->query($sql);
                       while ($kq=$ketqua->fetch_assoc()){ 
-                      $sl++;
+                      $sl++; }
                      ?>
                       <li>
                         <a href="dsdonhang.php">
                           <i class="fa fa-users text-aqua"></i>Bạn có <?php echo $sl;?> đơn hàng mới.
                         </a>
                       </li>
-                      <?php } ?>
                       <?php
                         $sl2 = 0;
                         $t = 0;
                         $sql2="SELECT * FROM nguyenlieu WHERE sl ='$t'";
                         $ketqua2=$connect->query($sql2);
                         while ($kq2=$ketqua2->fetch_assoc()){ 
-                          $sl2++;
+                          $sl2++;}
+                          if($sl2>0){
                       ?>
                       <li style="background: #f89898;">
                         <a href="dsnguyenlieu.php">

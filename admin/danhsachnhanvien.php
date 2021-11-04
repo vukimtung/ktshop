@@ -34,6 +34,11 @@
                 <tr>
                   <th>STT</th>
                   <th>Tên nhân viên</th>
+                  <th>Ngày sinh</th>
+                  <th>Giới tính</th>
+                  <th>Email</th>
+                  <th>Số điện thoại</th>
+                  <th>Địa chỉ</th>
                   <th>Tùy chọn</th>
                 </tr>
                 </thead>
@@ -49,6 +54,11 @@
                   <tr>
                   <td><?php echo $stt;?></td>
                   <td><?php echo $kq['ten_nv']?></td>
+                  <td><?php echo $kq['ngaysinh']?></td>
+                  <td><?php echo $kq['gioitinh']?></td>
+                  <td><?php echo $kq['email_nv']?></td>
+                  <td><?php echo $kq['dienthoai_nv']?></td>
+                  <td><?php echo $kq['diachi_nv']?></td>
                   <td>
                     <a href="xulybackend/xoanhanvien.php?del_id=<?php echo $kq['id_nv']?>" style="padding-right: 20px" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"> Xóa</i></a>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#message<?php echo $kq['id_nv'];?>"><i class="fa fa-eye" aria-hidden="true"> Sửa</i></button>
@@ -57,9 +67,9 @@
                 <!-- Modal sửa -->
                 <div class="modal fade" id="message<?php echo $kq['id_nv'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
-                        <div class="modal-header" style="text-align: center;">
-                            <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Sửa Nhân Viên</h2>
+                    <div class="modal-content" style="border-radius: 5px;">
+                  <div class="modal-header" style="text-align: center; border-bottom: none;">
+                            <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Sửa Thông Tin Nhân Viên</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -151,8 +161,8 @@
             <!-- Modal thêm -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
-                <div class="modal-header" style="text-align: center;">
+            <div class="modal-content" style="border-radius: 5px;">
+                  <div class="modal-header" style="text-align: center; border-bottom: none;">
                     <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Thêm Nhân Viên</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
                     <span aria-hidden="true">&times;</span>

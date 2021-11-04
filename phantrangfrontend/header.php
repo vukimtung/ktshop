@@ -115,7 +115,7 @@ include('config.php');
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a> -->
 				<a href="https://m.me/106177684946031?ref=ktshop" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
-							<i class="fab fa-facebook-messenger"></i>
+							<i class="fa fa-facebook-messenger"></i>
 				</a>
 			</div>
 

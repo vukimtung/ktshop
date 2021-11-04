@@ -16,8 +16,8 @@ include("phantrangfrontend/head.php");
 	<div class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-					<div class="m-l-25 m-r--38 m-lr-0-xl">
+				<div class="col-lg-10 col-xl-8 m-lr-auto m-b-50">
+					<div class="m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head" style="background: linear-gradient(-180deg, rgb(242, 228, 159), rgb(244 142 151));">
@@ -39,7 +39,7 @@ include("phantrangfrontend/head.php");
 										?>
 
 								<tr class="table_row">
-									<td class="column-1">
+									<td class="column-1" style="padding-left:5px;">
 										<div class="how-itemcart1">
 											<img src="<?php echo $value['item_picture'];?>" alt="IMG">
 										</div>
@@ -64,13 +64,13 @@ include("phantrangfrontend/head.php");
 									<td class="column-5"><?php echo number_format($tongtien);?> VND</td>
 
 									<td class="column-6">
-											<button class="btn btn-sm btn-outline-danger" name="capnhat">Cập nhật</button>
+											<button class="btn btn-sm btn-success" name="capnhat">Cập nhật</button>
 											<input type="hidden" name="item_name" value="<?php echo $value['item_name']; ?>">
 										</form>
 
-										<td class="column-6">
+										<td class="column-6" style="padding-right:5px;">
 										<form action="xulyfrontend/xoaspgiohang.php" method="POST">
-											<button class="btn btn-sm btn-outline-danger" name="xoa">Xóa</button>
+											<button class="btn btn-sm btn-danger" name="xoa">Xóa</button>
 											<input type="hidden" name="item_name" value="<?php echo $value['item_name']; ?>">
 										</form>
 									</td>
@@ -91,7 +91,7 @@ include("phantrangfrontend/head.php");
 					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
 
 						<div class="flex-w flex-t bor12 p-b-13">
-							<div class="size-208">
+							<div class="">
 								<span class="stext-110 cl2">
 									Thành Tiền:
 								</span>

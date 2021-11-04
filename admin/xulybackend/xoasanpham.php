@@ -3,7 +3,9 @@
 	$newid=$_GET['del_id'];
 	$sql="DELETE FROM products WHERE id_pro='$newid'";
 	if (mysqli_query($connect,$sql)) {
-		header('location: ../danhsachsp.php');
+		echo "<script>alert('Xóa sản phẩm thành công.');
+						window.location.href='../danhsachsp.php';
+				</script>";
 	}
 
 ?>

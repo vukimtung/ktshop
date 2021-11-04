@@ -1,4 +1,5 @@
 <?php 
+
   session_start();
 
 	if(isset($_POST['login'])){
@@ -22,7 +23,7 @@
 		}else{
 			echo "<script>
 					alert('Đăng nhập thất bại');
-					window.location.href='../taikhoan.php';
+					history.back();
 				</script>";
 		}
 

@@ -59,8 +59,8 @@
                 <!-- Modal sửa -->
                 <div class="modal fade" id="message<?php echo $kq['id_r'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
-                        <div class="modal-header" style="text-align: center;">
+                    <div class="modal-content" style="border-radius: 5px;">
+                  <div class="modal-header" style="text-align: center; border-bottom: none;">
                             <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Sửa Quyền</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
                             <span aria-hidden="true">&times;</span>
@@ -94,8 +94,8 @@
             <!-- Modal thêm -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content" style="border-radius: 20px; background: linear-gradient( -180deg, rgb(212 244 209), rgb(230 168 190));">
-                <div class="modal-header" style="text-align: center;">
+            <div class="modal-content" style="border-radius: 5px;">
+                  <div class="modal-header" style="text-align: center; border-bottom: none;">
                     <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Thêm Quyền</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 45px; margin-top: -40px;">
                     <span aria-hidden="true">&times;</span>

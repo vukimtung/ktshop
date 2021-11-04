@@ -23,11 +23,11 @@ include("phantrangfrontend/head.php");
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head" style="background: linear-gradient(-180deg, rgb(242, 228, 159), rgb(244 142 151));">
-									<th class="column-1">Sản Phẩm</th>
-									<th class="column-2"></th>
+									<th class="column-1">Hình ảnh</th>
+									<th class="column-2">Tên sản phẩm</th>
 									<th class="column-3">Giá</th>
-									<th class="column-4">Số Lượng</th>
-									<th class="column-5">Tổng Tiền</th>
+									<th class="column-4">Số lượng</th>
+									<th class="column-5">Tổng tiền</th>
 								</tr>
 
 								<?php
@@ -40,7 +40,7 @@ include("phantrangfrontend/head.php");
 										?>
 
 								<tr class="table_row">
-									<td class="column-1">
+									<td class="column-1" style="padding-left:5px;">
 										<div class="how-itemcart1">
 											<img src="<?php echo $value['item_picture'];?>" alt="IMG">
 										</div>
@@ -81,20 +81,42 @@ include("phantrangfrontend/head.php");
 								
 								<div class="p-t-15">
 									<form action="xulyfrontend/xulythanhtoan.php" method="POST">
+									<p class="stext-111 cl6 p-t-2">Tên Khách Hàng</p>
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa chỉ của bạn" required="">
+									<?php
+										if (isset($_SESSION['user_email_address'])){ ?>
+											<input class="stext-111 cl8 plh3 size-111 p-lr-10" type="text" name="tenkh" value="<?php echo $_SESSION['user_first_name'].' '.$_SESSION['user_last_name'];?>">
+										<?php } else if (isset($_SESSION['email'])){ ?>
+										<input class="stext-111 cl8 plh3 size-111 p-lr-10" type="text" name="tenkh" value="<?php echo $_SESSION['name_cust'];?>">
+										<?php } else { ?>
+											<input class="stext-111 cl8 plh3 size-111 p-lr-10" type="text" name="tenkh" value="">
+										<?php } ?>
+
 									</div>
 
-									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Số điện thoại" required="">
+										<p class="stext-111 cl6 p-t-2">Địa Chỉ Nhận Hàng</p>
+										
+									<div class="m-b-10">
+										<!-- <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa chỉ của bạn" required=""> -->
+										<select class="stext-111 cl8 plh3 size-111 p-lr-10" name="address">
+										<?php
+											include('phantrangfrontend/connect.php');
+											$idkh = $_SESSION['customer_id'];
+											$sql="SELECT * FROM dc_khachhang WHERE id_kh = '$idkh'";
+											$ketqua=mysqli_query($connect, $sql);
+											while($row=mysqli_fetch_assoc($ketqua)){
+											echo "<option value=".$row['id_dc'].">".$row['diachi_kh']."</option>";
+											}
+										?>
+										</select>						
 									</div>
+										<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+											+ Thêm địa chỉ mới
+										</button>
 
-									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="hinhthuctt">
-											<option value="">--Chọn Hình Thức Thanh Toán--</option>
-											<option value="Tiền mặt">Tiền mặt khi nhận hàng</option>
-										</select>
-										<div class="dropDownSelect2"></div>
+									<p class="stext-111 cl6 p-t-10">Số Điện Thoại</p>
+									<div class="bor8 bg0">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-10" type="text" name="phone" placeholder="Nhập số điện thoại" required="">
 									</div>
 								</div>
 							</div>
@@ -127,6 +149,34 @@ include("phantrangfrontend/head.php");
 					</div>
 				</div>
 			</div>
+
+			<!-- Modal thêm -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content" style="margin-top: 200px;">
+                  <div class="modal-header" style="text-align: center; border-bottom: none;">
+                      <h2 class="modal-title" id="exampleModalLongTitle" style="color: red; font-weight: bold;">Thêm địa chỉ nhận hàng</h2>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 35px;">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                  <form role="form" action="xulyfrontend/xulythemdckh.php" method="POST">
+                    <div class="box-body">
+                      <div class="form-group">
+                        <label for="" style="font-weight:bold;">Địa chỉ mới</label>
+                        <input type="text" class="form-control" id="dcnh" name="dcnh" placeholder="Nhập địa chỉ nhận hàng" required>
+                      </div>
+                    </div>
+                    <div class="box-footer" style="background-color: unset; text-align: center;">
+					<input type="hidden" name="idkh" value="<?php $idkhachhang = $_SESSION['customer_id']; echo $idkhachhang; ?>">
+                      <button type="submit" class="btn btn-primary" name="hoanthanh">Thêm</button>
+                    </div>
+                  </form>
+                  </div>
+              </div>
+            </div>
+            <!-- end modal thêm -->
 		</div>
 	</div>
 		

@@ -15,7 +15,7 @@ if (isset($_POST['dangky'])) {
 			if(isset($kq1)){
 				echo "<script>
 						alert('Email đã tồn tại');
-						window.location.href='../taikhoan.php';
+							history.back();
 					</script>";
 			}else{
 				if ($password==$repassword) {
@@ -27,7 +27,7 @@ if (isset($_POST['dangky'])) {
 						</script>";
 				} else {
 					echo "<script>alert('Mật khẩu không trùng khớp.');
-								window.location.href='../taikhoan.php';
+							history.back();
 						</script>";
 				 }
 			}
