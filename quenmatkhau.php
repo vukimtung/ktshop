@@ -10,32 +10,30 @@ include('config.php');
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $sql="SELECT * FROM customers WHERE email_cust = '$email'";
-    $ketqua=$connect->query($sql);
-    while($kq=$ketqua->fetch_assoc()){
+    $ketqua=mysqli_query($connect, $sql);
+    if(mysqli_num_rows($ketqua) > 0){
         $token = uniqid(md5(time()));
-        $email_kh = $kq['email_cust'];
-        $sql2="SELECT * FROM customers WHERE email_cust = '$email'";
-        $ketqua2=$connect->query($sql);
-        if (mysqli_query($connect, $sql2)) {
-            $sql1="UPDATE password_reset SET token = '$token' WHERE email = '$email_kh'";
-            $ketqua1=$connect->query($sql1);
-            if (mysqli_query($connect, $sql1)) {
-                echo "<script>
-                            window.location.href='doimatkhau.php?token=$token';
-                    </script>";
-            }
+        $sql2="SELECT * FROM password_reset WHERE email = '$email'";
+        $ketqua2=mysqli_query($connect, $sql2);
+        if (mysqli_num_rows($ketqua2) > 0) {
+            $sql1="UPDATE password_reset SET token = '$token' WHERE email = '$email'";
         } else {
-            $sql1="INSERT INTO password_reset(email, token) VALUE('$email_kh','$token')";
-            $ketqua1=$connect->query($sql1);
+            $sql1="INSERT INTO password_reset(email, token) VALUE('$email','$token')";
+        }
+		$ketqua1=$connect->query($sql1);
             if (mysqli_query($connect, $sql1)) {
                 echo "<script>
                             window.location.href='doimatkhau.php?token=$token';
                     </script>";
             }
-        }
 
         
-    }
+    } else {
+		echo "<script>
+					alert('Không tìm thấy email.');
+					history.back();
+				</script>";
+	}
 
 }
 ?>
@@ -67,7 +65,7 @@ if(isset($_POST['submit'])){
                             <label for="">Vui lòng nhập email để tìm kiếm tài khoản của bạn.</label>
 
 							<div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="email" value="" required>
 								<img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
 							</div>
 

@@ -180,6 +180,12 @@
         </li>
 
         <li class="">
+          <a href="backuprestore.php">
+            <i class="fa fa-table"></i> <span>Backup & Restore</span>
+          </a>
+        </li>
+
+        <li class="">
           <a href="phantrangadmin/dangxuat.php">
             <i class="fa fa-key"></i> <span>Đăng xuất</span></i>
             </span>

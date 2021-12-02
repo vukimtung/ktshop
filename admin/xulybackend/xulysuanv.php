@@ -26,8 +26,8 @@ if (isset($_POST['sua'])) {
 				history.back();
 			</script>";
 	}else{
-		if ($tinhtuoi < 15) {
-			echo "<script>alert('Phải lớn hơn 15 tuổi!');
+		if ($tinhtuoi < 18) {
+			echo "<script>alert('Phải lớn hơn 18 tuổi!');
 					window.location.href='../danhsachnhanvien.php';
 				</script>";
 		} else {

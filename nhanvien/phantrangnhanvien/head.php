@@ -34,4 +34,12 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+
+  <!-- auto reload -->
+  <script type="text/javascript">
+    function reFresh() {
+      window.open(location.reload(true))
+    }
+    window.setInterval("reFresh()",15000);
+</script>
 </head>

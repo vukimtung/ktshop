@@ -266,6 +266,13 @@ include('config.php');
 																style="" class="btn btn-warning">
 																<i class="fa fa-check" aria-hidden="true"> Đã nhận hàng</i></a>
 															</td>
+														<?php } elseif($kq2['status']=='Đã hủy') { ?>
+															<td class="column-4">
+																<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
+															</td>
+															<td class="column-7">
+																<a href="xulyfrontend/datlaidon.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-edit" aria-hidden="true"> Đặt lại</i></a>
+															</td>
 														<?php } else { ?>
 															<td class="column-4">
 																<a href="chitietdh.php?iddh=<?php echo $kq2['id_order']?>" class="btn btn-default button-xem"><i class="fa fa-eye" aria-hidden="true"> Xem</i></a>
