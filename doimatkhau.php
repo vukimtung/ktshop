@@ -71,11 +71,11 @@ if(isset($_POST['submit'])){
 							</div>
 
                             <div class="bor8 m-b-20 how-pos4-parent">
-							    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="Mật khẩu mới"><i class="fa fa-key how-pos4 pointer-none"></i>
+							    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="Mật khẩu mới" required><i class="fa fa-key how-pos4 pointer-none"></i>
 							</div>
 
                             <div class="bor8 m-b-20 how-pos4-parent">
-							    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="repassword" placeholder="Nhập lại mật khẩu"><i class="fa fa-key how-pos4 pointer-none"></i>
+							    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="repassword" placeholder="Nhập lại mật khẩu" required><i class="fa fa-key how-pos4 pointer-none"></i>
 							</div>
 
 							<div style="display: flex;">

@@ -31,7 +31,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <h1 style="color: red;"><strong>Đăng nhập Admin</strong></h1>
+    <h1 style="color: red;"><strong>Đăng Nhập</strong></h1>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

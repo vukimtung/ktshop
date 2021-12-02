@@ -388,6 +388,12 @@
           
           <!-- /.box -->
         </div>
+
+        <div class="col-md-6">
+            
+
+           
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->

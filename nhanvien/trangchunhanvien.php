@@ -51,35 +51,6 @@
             </a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <?php
-          $stt1 = 0;
-          include('../phantrangfrontend/connect.php');
-          $sql1="SELECT * FROM nhanvien";
-          $ketqua1=$connect->query($sql1);
-          while ($kq1=$ketqua1->fetch_assoc()){ 
-                    $stt1++;
-          }
-                  ?>
-          <div class="small-box bg-green">
-            <div class="inner">
-              <!-- <h3>53<sup style="font-size: 20px">%</sup></h3> -->
-              <h3><?php echo $stt1; ?></h3>
-
-              <p>Nhân viên</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-stats-bars"></i> -->
-              <i class="ion ion-person"></i>
-            </div>
-            <a href="danhsachnhanvien.php" class="small-box-footer">
-              Xem <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-        <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <?php
