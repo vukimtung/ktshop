@@ -66,7 +66,17 @@
       </div>
       <!-- /.row -->
 
-      
+      <!-- Chart -->
+      <div class="row" style="margin-bottom: 10px">
+        <div class="col-xs-12">
+          <h2>Thống kê doanh số bán ra của sản phẩm</h2>
+          <div id="chart-container" style="width:640px; height:auto;">
+            <canvas id="mycanvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+
       <!-- /.row -->
       <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -88,9 +98,6 @@
                         <button type="submit" class="btn btn-success" name="xemngay">Xem</button>
                       </div>
                 </form>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-            
-                  </div>
 
           </div>
         </div>
@@ -242,7 +249,7 @@
                 $ketqua112=$connect->query($sql112);
                 while($kq112=$ketqua112->fetch_assoc()) {
             ?>
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-lg-12">
             <div class="box">
               <div class="box-header">
                   <ol class="breadcrumb">
@@ -333,5 +340,12 @@
   <?php 
   include("phantrangadmin/footer.php");
   ?>
+
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
 </body>
 </html>
